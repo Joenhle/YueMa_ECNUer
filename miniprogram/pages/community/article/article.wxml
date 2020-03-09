@@ -1,0 +1,60 @@
+
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">文章详情</view>
+</cu-custom>
+
+<view class="page" style="padding:30rpx">
+  <view class="page__bd">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="margin-left:10px;margin-top:0px;width:40px;height:40px">
+      <image class="weui-media-box__thumb" style="border-radius:15%;margin-top:3px" src="{{ne.src_of_avatar}}" />
+    </view>
+    <view class="nickName">{{ne.poster}}</view>
+    <view class="weui-media-box__info__meta post_time">{{ne.post_time}}</view>
+
+    <view class="weui-article">
+      <view class="weui-article__section">
+        <view class="weui-article__p text">
+        <text>{{ne.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="image_content">
+      <view class='image' wx:for="{{ne.images}}">
+        <image class="moment_img" mode="aspectFill" src="{{item}}" data-src="{{item}}" data-images="{{ne.images}}" bindtap="PreviewImage"></image>
+      </view>
+    </view>
+
+
+
+    <view class="footer">
+      <view class="yuedushu">阅读数{{ne.number_of_visit}}</view>
+      <image class="image_of_dianzan" src="{{image_dianzan_src}}" bindtap="Dianzan"></image>
+      <view class="dianzanshu">{{ne.dianzan_list.length}}</view>
+      <image class="image_of_pinglun" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论.png" bindtap="Showpinglun"></image>
+      <view class="pinglunshu">{{ne.comments.length}}</view>
+      <image class="image_of_post_shanchu {{ne._openid==openid?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除(2).png" bindtap="Post_of_shanchu"></image>
+    </view>
+    <image class="image_of_sanjiao {{show_image_sanjiao?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论三角.png"></image>
+
+    <view class="comments {{show_image_sanjiao?'show':'hide'}}" wx:for="{{ne.comments}}" wx:for-index="i">
+      <view class="comments_of_avatar">
+        <image class="weui-media-box__thumb" style="border-radius:100%" src="{{item[1]}}" />
+      </view>
+      <view class="nickName_of_comment">{{item[0]}}</view>
+      <view class="comments_of_time">{{item[3]}}</view>
+      <view class="comments_of_text">{{item[2]}}</view>
+      <view class="image_of_shanchu_view ne._openid==openid?'show':item[4]==openid?'show':'hide'">
+        <image class="image_of_shanchu" bindtap="Comments_shanchu" data-i="{{i}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除.png"></image>
+      </view>
+      <view class="divLine_of_comments"></view>
+    </view>
+    <view class="comments_of_input_view {{show_image_sanjiao?'show':'hide'}}">
+      <input class="comments_of_input" type="text" value="{{input_empty}}" placeholder="请说点什么吧..." bindinput="BindCommentsInput"></input>
+    </view>
+    <view class="image_of_fabu_view {{show_image_sanjiao?'show':'hide'}}">
+      <image class="image_of_fabu" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/发布.png" bindtap="Comments_fabu"></image>
+    </view>
+  </view>
+</view>

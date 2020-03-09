@@ -1,0 +1,45 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">聊天室</view>
+</cu-custom>
+
+ <scroll-view scroll-y="true" >
+  <view class="cu-chat" style="margin-bottom:{{is_keyboard?'270px':''}}">
+    <view wx:for="{{chat}}" wx:for-index="i" class="cu-item {{item[4]==openid ?'self':''}}">
+      <!--自己的信息-->
+      <view wx:if="{{item[4]==openid}}" class="main">
+        <view wx:if="{{item[4]==openid&&item[5]!='image'}}" class="content bg-green shadow">
+          <text>{{item[2]}}</text>
+        </view>
+        <image wx:if="{{item[4]==openid && item[5]=='image'}}"src="{{item[2]}}" class="radius" mode="widthFix" style="width:140px" bindtap="PreviewImage" data-src="{{item[2]}}"></image>
+      </view>
+      <view wx:if="{{item[4]==openid}}" class="cu-avatar radius" style="background-image:url({{item[1]}});"></view>
+      <view wx:if="{{item[4]==openid}}" class="date">{{item[3]}}</view>
+
+      <!--别人的信息-->
+      <view wx:if="{{item[4]!=openid}}" class="cu-avatar radius" style="background-image:url({{item[1]}});"></view>
+      <view wx:if="{{item[4]!=openid}}" class="main">
+        <view wx:if="{{item[4]!=openid && item[5]!='image'}}" class="content shadow">
+          <text>{{item[2]}}</text>
+        </view>
+         <image wx:if="{{item[4]!=openid && item[5]=='image'}}"src="{{item[2]}}" class="radius" mode="widthFix" style="width:140px" bindtap="PreviewImage" data-src="{{item[2]}}"></image>
+      </view>
+      <view wx:if="{{item[4]!=openid}}" class="date ">{{item[3]}}</view>
+
+    </view>
+
+  </view>
+  </scroll-view>
+
+
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <view class="action">
+    <text class="cuIcon-friend text-grey" bindtap="Friends"></text>
+  </view>
+  <input class="solid-bottom srch-ipt"  value="{{input_empty}}" bindfocus="InputFocus" bindblur="InputBlur" bindinput="bindinput" adjust-position="{{false}}" maxlength="300" cursor-spacing="10" ></input>
+  <view class="action">
+    <text class="cuIcon-camerafill text-grey" bindtap="Send_images"></text>
+  </view>
+  <button class="cu-btn bg-green shadow" bindtap="Send">发送</button>
+</view>

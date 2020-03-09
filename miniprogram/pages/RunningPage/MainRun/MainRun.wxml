@@ -1,0 +1,46 @@
+<!--miniprogram/pages/RunningPage/MainRun/MainRun.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="content">陪跑</view>
+</cu-custom>
+<view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}" style="position: fixed;width: 100%;top:55px;right: 0;z-index:100;">
+    <view class="cu-item">
+      <view class="cuIcon-discoverfill text-purple" bindtap="TodiscoverDemand">
+      </view>
+      <text>搜寻</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-upstagefill text-orange" bindtap="TorankingList">
+      </view>
+      <text>排行榜</text>
+    </view>
+    <view class="cu-item">
+      <view class="cuIcon-writefill text-pink" bindtap="TocreateDemand">
+      </view>
+      <text>创建</text>
+    </view>
+  </view>
+<scroll-view scroll-y="{{modalName==null}}" class="page " style="margin-top:70px;">
+
+  <view class="weui-cells weui-cells_after-title" wx:for="{{demandPosts}}" wx:for-index="i">
+
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <navigator url="../basicInfo/basicInfo?poster_openid={{demandPosts[i]._openid}}"  class="cu-avatar round lg margin-left" style="background-image:url({{item.src_of_avatar}}); margin-right: 15px;width: 65px;height: 65px;">
+          <view class="cu-tag badge {{item.poster_gender==2?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+        </navigator>
+      </view>
+      <navigator url="../demandPost/demandPost?post_id={{demandPosts[i]._id}}" class="weui-cell__bd">
+        <view style='font-size:15px'>{{item.poster?item.poster:"未知"}}</view>
+        <view style='font-size:9px;color:#888888'>性别要求：{{gender[item.gender_require]}}</view>
+        <view style='font-size:9px;color:#888888'>已有人数：{{item.num_of_people}}</view>
+        <view style='font-size:9px;color:#888888'>跑步时间：{{item.run_time}}</view>
+      </navigator>
+      <navigator url="../demandPost/demandPost?post_id={{demandPosts[i]._id}}" class="weui-cell__ft weui-cell__ft_in-access"></navigator>
+    </view>
+
+  </view>
+
+  <view bindtap='adddetial'>
+    <image class="run_icon" src="/images/RunningPage/run(pink).png" bindtap="TorunMap"></image>
+  </view>
+</scroll-view>

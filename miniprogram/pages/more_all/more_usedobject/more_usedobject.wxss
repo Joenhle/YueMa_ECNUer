@@ -1,0 +1,242 @@
+/* miniprogram/pages/home/home.wxss */
+/*页面配置*/
+/*1.图片导航九宫格*/
+.weui-grids {
+  position: relative;
+  overflow: hidden;
+}
+.weui-grids:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 2px solid rgb(224, 43, 119);
+  color: rgb(252, 45, 124);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-grids:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-left: 1px solid rgba(241, 48, 138, 0.897);
+  color:  rgb(252, 45, 124);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.weui-grid {
+  position: relative;
+  float: left;
+  padding: 20px 10px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+}
+.weui-grid:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  bottom: 0;
+  border-right: 1px solid rgba(241, 48, 138, 0.897);
+  color: rgb(252, 45, 124);
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.weui-grid:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 2px solid rgba(241, 48, 138, 0.897);
+  color:rgb(252, 45, 124);
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui-grid:active {
+  background-color: pink;
+}
+.weui-grid__icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+.weui-grid__icon image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.weui-grid__icon + .weui-grid__label {
+  margin-top: 5px;
+}
+.weui-grid__label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color:black ;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* 2搜索框样式 */
+.search
+{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;/*居中对齐弹性盒的各项 */
+  width:95%;/*输入框宽度*/
+  height:80rpx;/*输入框高度*/
+  background-color:rgb(248, 246, 246);/*背景颜色*/
+  margin-top: 2%;/*与顶部距离*/
+  border:1rpx solid rgb(245, 11, 120);/*边框的颜色*/
+  border-radius: 5rpx;/*边框粗细*/
+  margin-bottom: 2%;
+  box-sizing: content-box;
+}
+
+/* 搜索框提示文字样式 */
+.search input
+{
+  font-size:35rpx;/*字体大小*/
+  padding-left:30rpx; /*与字体左边的距离*/
+}
+
+/* 搜索框小图标 */
+.search image
+{ 
+  width:60rpx;
+  height:60rpx;
+  padding-right:20rpx;
+  box-sizing: content-box;
+}
+
+/*包含的内容（图片和文字等）*/
+.container-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 4px 3px 2px; /*上下左右的边距*/
+  margin: 0 auto;
+  background-color: pink;
+}
+
+/*分界线*/
+.container-line{
+  width: 100%;
+  height: 3rpx;
+  background-color: rgba(248, 60, 132, 0.89);
+}
+
+/*用户的信息*/
+.user-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+/*用户的头像*/
+.user-head {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+/*用户的时间和名字*/
+.user-name-time {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+/*用户的名字*/
+.user-name {
+  font-size: 15px;
+  color: rgb(69, 180, 245);
+  font-weight: bold;
+}
+
+/*用户的发布时间*/
+.user-publish-time {
+  font-size: 15px;
+  color: rgb(238, 45, 119);
+}
+
+/*内容*/
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+  margin-top: 2px;
+}
+
+/*允许竖向华东*/
+.content-scroll {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/*发布信息的字体*/
+.content-text {
+  font-size: 16px;
+  color: rgb(104, 90, 228);
+  margin-left: 10px;
+}
+
+/*发布信息的图像*/
+.content-img {
+  width: 97px;
+  height: 97px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: #999;
+}
+
+  /*3.图片圆形显示*/
+ .avatar{
+    height: 70rpx;
+    width: 70rpx;
+    border-radius: 25px;
+    background: pink;                                                                   
+    display: flex;
+}
+
+.imagesize{
+  z-index:10;
+  position:fixed; 
+  bottom:3%;
+  left:45%;
+  display: flex;
+  justify-content: center;
+}
+
+  .user-inform{
+  margin-right: 10px;
+  width:90rpx;
+  height:90rpx; 
+  }
+/* pages/more_usedobject/more_usedobject.wxss */

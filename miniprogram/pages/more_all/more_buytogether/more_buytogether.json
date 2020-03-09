@@ -1,0 +1,7 @@
+{
+  "onReachBottomDistance": 100,
+  "navigationBarTitleText": "拼单奶茶",
+  "enablePullDownRefresh": true,
+  "enableReachBottom": true,
+  "backgroundColor": "#f0145a"
+}

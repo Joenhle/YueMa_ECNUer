@@ -1,0 +1,35 @@
+<!--miniprogram/pages/runMap/runMap.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+  <view slot="content">跑步</view>
+</cu-custom>
+<view class="mainView">
+  <map class="mapView" style="width: 100%; height: 1250rpx;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}">
+  </map>
+
+  <view wx:if="{{start_iconbool}}">
+    <image class="start_icon" src="/images/RunningPage/start(pink).png" bindtap="starRun"></image>
+  </view>
+  <view wx:if="{{pause_iconbool}}">
+    <image class="start_icon" src="/images/RunningPage/pauserun(pink).png" bindtap="stopRun"></image>
+  </view>
+  <view wx:if="{{startfinish_iconbool}}">
+    <image class="start_iconwithfinish" src="/images/RunningPage/start(blue).png" bindtap="starRun"></image>
+    <image class="finish_icon" src="/images/RunningPage/finish(red).png" bindtap="finishRun"></image>
+  </view>
+
+
+  <view class="bg-white fu_runword" style="height: 20%">
+    <view class=" text-xxl padding zi_runword">
+      <text class="text-black text-bold">00'00''</text>
+      <text>\n配速</text>
+    </view>
+    <view class=" text-xxl padding zi_runword">
+      <text class="text-black text-bold">{{time}}</text>
+      <text>\n时间</text>
+    </view>
+    <view class=" text-xxl padding zi_runword">
+      <text class="text-black text-bold">{{meters}}</text>
+      <text>\n公里</text>
+    </view>
+  </view>
+</view>

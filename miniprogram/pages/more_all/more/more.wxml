@@ -1,0 +1,52 @@
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">更多</view>
+</cu-custom>
+  <view class="my">
+    <!--二手物品-->
+      <view class="my-item flex-wrp" catchtap="usedobject">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/more/usedobject.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>二手物品</text>
+      </view>
+    </view>
+      <!--拼单奶茶-->
+     <view class="my-item flex-wrp" catchtap="buytogether">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/more/buytogether.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>拼单奶茶</text>
+      </view>
+    </view>
+     <!--疑惑解答-->
+      <view class="my-item flex-wrp" catchtap="question">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/more/question.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>疑惑解答</text>
+      </view>
+    </view>
+    <!--运动市场-->
+      <view class="my-item flex-wrp" catchtap="market">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/more/market.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>运动市场</text>
+      </view>
+    </view>
+      <!--打印机-->
+    <view class="my-item flex-wrp" catchtap="printer">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/more/printer.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>打印机</text>
+      </view>
+    </view>
+  
+  </view>

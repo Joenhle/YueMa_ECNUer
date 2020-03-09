@@ -1,0 +1,67 @@
+<!--miniprogram/pages/RunningPage/createDemand/createDemand.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">创建需求</view>
+</cu-custom>
+<form>
+  <view class="cu-form-group margin-top">
+    <view class="title">地点</view>
+    <input placeholder="操场" ></input>
+    <text class="cuIcon-locationfill text-orange"></text>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">时长</view>
+    <input placeholder="单位为分钟" bindchange="changeDuration"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">日期</view>
+    <picker mode="date" value="{{date}}" start="{{nowdate}}" end="2020-09-01" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">时间</view>
+    <picker mode="time" value="{{time}}" start="{{datetoday? nowtime:'5:00'}}" end="22:00" bindchange="bindTimeChange">
+      <view class="picker">
+        {{time}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">人数上限</view>
+    <picker bindchange="bindMaxmemberChange" value="{{maxmemberIndex}}" range="{{maxmember}}">
+      <view class="picker">
+        {{maxmember[maxmemberIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">性别要求</view>
+    <picker bindchange="bindGenderChange" value="{{genderIndex}}" range="{{gender}}">
+      <view class="picker">
+        {{gender[genderIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">配速要求</view>
+    <picker bindchange="bindSpeedChange" value="{{speedIndex}}" range="{{speed}}">
+      <view class="picker">
+        {{speed[speedIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">备注</view>
+    <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="请输入备注"></textarea>
+  </view>
+
+  <view class="box" style="position: fixed; bottom: 40px; width: 100%;">
+    <view class="cu-bar btn-group">
+      <button class="cu-btn bg-green shadow-blur round">保存</button>
+      <button class="cu-btn bg-blue shadow-blur round" bindtap="submitDemand">创建</button>
+    </view>
+  </view>
+</form>

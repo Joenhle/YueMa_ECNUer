@@ -1,0 +1,86 @@
+{
+  "pages": [
+    "pages/community/panel/panel",
+    "pages/index/index",
+    "pages/chat/chat",
+    "pages/chat_friends/chat_friends",
+    "pages/face_check/face_check",
+   
+    "pages/community/article/article",
+    "pages/community/publish/publish",
+    "pages/mine_all/mine/mine",
+    "pages/mine_all/mine_history/mine_history",
+    "pages/mine_all/mine_exercise/mine_exercise",
+    "pages/mine_all/mine_leaderboard/mine_leaderboard",
+     "pages/mine_all/mine_basic_information/mine_basic_information",
+    "pages/more_all/more/more",
+    "pages/more_all/more_usedobject/more_usedobject",
+    "pages/more_all/more_question/more_question",
+    "pages/more_all/more_buytogether/more_buytogether",
+    "pages/more_all/more_printer/more_printer",
+    "pages/more_all/more_market/more_market",
+
+    "pages/RunningPage/MainRun/MainRun",
+    "pages/RunningPage/rankingList/rankingList",
+    "pages/RunningPage/createDemand/createDemand",
+    "pages/RunningPage/demandPost/demandPost",
+    "pages/RunningPage/runMap/runMap",
+    "pages/RunningPage/basicInfo/basicInfo",
+    "pages/RunningPage/discoverDemand/discoverDemand",
+    "pages/RunningPage/test/test"
+
+
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#444",
+    "selectedColor": "#d6204b",
+    "backgroundColor": "#e89abe",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/community/panel/panel",
+        "text": "社区",
+        "iconPath": "images/main_page/community_communication.png",
+        "selectedIconPath": "images/main_page/community_communicationHL.png"
+      },
+
+      {
+        "pagePath": "pages/RunningPage/MainRun/MainRun",
+        "text": "约球",
+        "iconPath": "images/main_page/basketball.png",
+        "selectedIconPath": "images/main_page/basketballHL.png"
+      },
+    
+      {
+        "pagePath": "pages/more_all/more/more",
+        "text": "更多",
+        "iconPath": "images/main_page/many.png",
+        "selectedIconPath": "images/main_page/manyHL.png"
+      },
+      {
+        "pagePath": "pages/RunningPage/MainRun/MainRun",
+        "text": "约跑",
+        "iconPath": "images/main_page/running.png",
+        "selectedIconPath": "images/main_page/runningHL.png"
+      },
+      {
+        "pagePath": "pages/mine_all/mine/mine",
+        "text": "我的",
+        "iconPath": "images/main_page/my_information.png",
+        "selectedIconPath": "images/main_page/my_informationHL.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

@@ -1,0 +1,73 @@
+<!--pages/more_buytogether/more_buytogether.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">拼单</view>
+</cu-custom>
+<!-- 轮播图 -->
+<swiper indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+  <block wx:for="{{bnrUrl}}" wx:for-index="index">
+    <swiper-item>
+      <image src='{{item.url}}' style="width:100%" mode='aspectFill'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 图片导航  -->
+<view class="weui-grids">
+     <view class="weui-grid" wx:for="{{routers}}" wx:key="aa">
+            <view class='weui-grid__bg' bindtap='choosewhat' data-index="{{item.name}}">
+                <view class="weui-grid__icon">
+                    <image src="../{{item.url}}" mode="scaleToFill" /><!--scaleToFill 	缩放模式-->
+               </view>
+                <text class="weui-grid__label">{{item.name}}</text>
+             </view>
+     </view>
+</view>
+
+ <!--  搜索框  -->
+<view class='search'>
+     <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='search'></input>
+     <image class="" src='../../../images/more/usedobject_5.png' bindtap='search'></image>
+</view>
+
+<!-- 发布需求 -->
+<view class="imagesize">
+<image src='../../../images/more/normal_1.jpg' wx:if="{{click_publish}}" class='avatar' bindtap='change'> </image>
+<image wx:else  src='../../../images/more/normal_1.jpg'  class='avatar'></image>
+</view>
+
+<!--分割线-->
+ <view class='container-line'></view>
+ <!--显示数据-->
+<block wx:for='{{buytogether}}' wx:for-item="item" wx:for-index="idx">
+    <view class='container-line'></view>
+    <view class='container-content' data-topicId='{{item._id}}' data-openid='{{item._openid}}'>
+     <!--显示头像 -->
+      <view class='user-info'>
+        <image class='user-head' src='{{item.src_of_avatar}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>{{item.poster}}</view>
+          <view class='user-publish-time'>{{item.post_time}}</view>
+        </view>
+           <!--显示每个消息的图标-->
+         <image wx:if="{{item.leibie=='奶茶'}}" class='user-inform' src='../../../images/more/buytogether_1.png' mode='aspectFill'></image>
+         <image wx:elif="{{item.leibie=='外卖'}}" class='user-inform' src='../../../images/more/buytogether_2.png' mode='aspectFill'></image>
+          <image wx:elif="{{item.leibie=='旅行'}}" class='user-inform' src='../../../images/more/buytogether_3.png' mode='aspectFill'></image>
+           <image wx:elif="{{item.leibie=='淘宝'}}" class='user-inform' src='../../../images/more/buytogether_4.png' mode='aspectFill'></image>
+            <image wx:elif="{{item.leibie=='快递代送'}}" class='user-inform' src='../../../images/more/buytogether_5.png' mode='aspectFill'></image>
+             <image wx:elif="{{item.leibie=='其他'}}" class='user-inform' src='../../../images/more/buytogether_6.png' mode='aspectFill'></image>
+          <!--*****************测试 ***********-->
+           </view>
+      <!--文本和图片 -->
+      <view class='content'>
+          <text class='content-text'>{{item.text}}</text>
+          <scroll-view class='content-scroll' scroll-y='true'>
+              <block wx:for="{{item.images}}" wx:for-item="i" >
+              <image class='content-img' src='{{i}}' mode='aspectFill' bindtap='PreviewImage' data-src='{{i}}' data-images='{{item.images}}'></image>
+              </block>
+          </scroll-view>
+      </view>
+    </view>
+        <!-- 尾部的分割线 -->
+        <view class='container-line'></view>
+</block>

@@ -1,0 +1,19 @@
+/* miniprogram/pages/RunningPage/MainRun/MainRun.wxss */
+
+.run_icon {
+  position: fixed;
+  width: 90px;
+  height: 90px;
+  bottom: 30px;
+  right: 38%;
+  z-index: 100;
+}
+
+.head_img {
+  margin-right: 15px;
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+}

@@ -1,0 +1,83 @@
+<!--pages/mine/basic_information/basic_information.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的</view>
+</cu-custom>
+  <view class="my">
+
+    <view class="my-item flex-wrp" >
+      <view class="myitem-icon flex-item">
+      <image src="../../../images/mine/ID.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>昵称</text>
+      </view>
+      <view class="myitem-nameHL flex-item">
+       <text> {{id}}</text>
+      </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+     <view class="myitem-icon flex-item">
+      <image src="../../../images/mine/gender.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>性别</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+      {{gender}}
+      </view>
+    </view>
+
+     <view class="my-item flex-wrp" >
+      <view class="myitem-icon flex-item">
+         <image src="../../../images/mine/university.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>所在大学</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+      {{university}}
+      </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="../../../images/mine/age.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>年龄</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+      {{age}}
+      </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="../../../images/mine/constellation.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>星座</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+      {{constellation}}
+      </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="../../../images/mine/love.png"></image>
+      </view>
+      <view class="myitem-nameHL flex-item">
+        <text>爱好</text>
+      </view>
+      <view class="myitem-nameHL flex-item">
+      {{love}}
+      </view>
+    </view>
+
+   <view class='information'>
+    <button type="primary" size="default" bindtap="add_inforamtion"> 编辑个人信息 </button>
+   </view>
+  </view>

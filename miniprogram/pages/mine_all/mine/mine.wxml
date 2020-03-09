@@ -1,0 +1,70 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">我的</view>
+</cu-custom>
+<!--上部信息-->
+<!-- 第一次进入需要使用 button 来授权登录 -->
+<button wx:if="{{canIUse&&once_login==true}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<!--否则显示图像-->
+<view wx:else class="user flex-wrp" >
+   <!--头部图像-->
+    <view  class="avatar flex-item">
+     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    </view>
+    <view class="user-info flex-item">
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="edit">查看或编辑个人主页</text>
+    </view>
+</view>
+
+  <!--下部信息-->
+  <view class="my">
+    <view class="my-item flex-wrp" catchtap="sign_in">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/sign_in.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>签到</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp" catchtap="basic_information">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/basic_information.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>基本资料</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp" catchtap="credit_score">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/credit_score.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>信用积分</text>
+      </view>
+    </view>
+    <view class="my-item flex-wrp" catchtap="leaderboard">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/leaderboard.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>排行榜</text>
+      </view>
+    </view>
+     <view class="my-item flex-wrp" catchtap="history">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/history.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>发布历史</text>
+      </view>
+    </view>
+     <view class="my-item flex-wrp" catchtap="exercise">
+      <view class="myitem-icon flex-item">
+        <image src="../../../images/mine/exercise.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>运动历史</text>
+      </view>
+    </view>
+  </view>

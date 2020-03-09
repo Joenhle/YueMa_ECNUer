@@ -1,0 +1,57 @@
+<view class='cu-custom'>
+  <view class="cu-bar fixed bg-shadeTop" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='cuIcon-back'></text> 返回
+    </navigator>
+    <view class='content' style='top:{{StatusBar}}px;'>我的发布</view>
+  </view>
+</view>
+
+
+<swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{4}}" wx:key>
+    <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
+  </swiper-item>
+</swiper>
+
+<view class="VerticalBox">
+
+  <!--侧栏-->
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 375rpx)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!--右侧主栏-->
+  <scroll-view class="VerticalMain" scroll-y scr oll-with-animation style="height:calc(100vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" wx:for="{{list}}"  wx:key id="main-{{index}}">
+      <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='cuIcon-title text-green'></text> {{item.name}} </view>
+      </view>
+      <view class="cu-list menu-avatar">
+
+        <view class="cu-item cur" wx:for="{{list_history[index]}}">
+          <view class="cu-avatar radius lg" style="background-image:url(https://wx.qlogo.cn/mmopen/vi_32/JePXUWYSCnibrWiat5tI902nmVdOvmS7OR6vq7MfiaSOAkBspI25iaSxhR6aVePvgoGJHlRppOSLm9yO4h1kBMVPNA/132);">
+          </view>
+          <view class="content">
+            <view>
+              <text class="text-cut">{{item.name}}</text>
+              <view wx-if="{{item.people!=''}}" class="cu-tag round bg-orange sm">{{item.people}}人</view>
+            </view>
+            <view class="text-gray text-sm flex">
+              <text class="text-cut">{{item.text}}</text>
+            </view>
+          </view>
+          <view class="action">
+            <view class="text-grey text-xs">{{item.time}}</view>
+             <view wx:if="{{item.news.length!=0 && item.news!='0'}}" class="cu-tag round bg-red sm">{{item.news}}</view>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,21 @@
+page{
+ padding-bottom: 100rpx;
+}
+.srch-ipt {
+  /* prettier-ignore */
+  height: 32PX;
+  text-align: left;
+  /* prettier-ignore */
+  font-size: 15PX;
+}
+
+.ipt-placeholder {
+  /* prettier-ignore */
+  font-size: 15PX;
+  color: #bebebe;
+  text-align: left;
+}
+
+.lxy-nav-bar-search__input {
+  flex: 1;
+}

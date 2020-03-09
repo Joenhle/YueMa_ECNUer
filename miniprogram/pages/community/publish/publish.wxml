@@ -1,0 +1,29 @@
+
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">发布</view>
+</cu-custom>
+
+<view class='page'>
+  <textarea class='text' maxlength="-1" bindinput="input" placeholder="{{placeholder}}" auto-height/>
+  <view class="image_content">
+    <view class='image' wx:for="{{img_url}}">
+      <image class="moment_img" mode="aspectFill" src="{{item}}" bindtap="PreviewImage" data-src="{{item}}" data-images="{{img_url}}" bindlongpress="deleteImage" data-index="{{index}}"></image>
+    </view>
+    <view class='image' style='display:{{hideAdd?"none":"block"}}'>
+      <image bindtap="chooseimage" class="moment_img" src='cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/add_publish.jpg'></image>
+    </view>
+
+    <view class="divLine {{leibie=='jingyan'?'show':'hide'}}"></view>
+    <view class="section {{leibie=='jingyan'?'show':'hide'}}" style="height:36px;margin-bottom:3px;margin-top:-8px;width:100%">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          选择类别：{{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class="divLine {{leibie=='jingyan'?'show':'hide'}}"></view>
+
+  </view>
+  <button bindtap="send" type="default" style='margin-right:5px;margin-left:5px;width:100%'>发布</button>
+</view>

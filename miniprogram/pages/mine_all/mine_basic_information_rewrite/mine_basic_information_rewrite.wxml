@@ -1,0 +1,91 @@
+<!--pages/mine_basic_information_rewrite/mine_basic_information_rewrite.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">编辑个人信息</view>
+</cu-custom>
+
+
+  <view class="my">
+
+    <view class="my-item flex-wrp" >
+      <view class="myitem-icon flex-item">
+      <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790000.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>昵称</text>
+      </view>
+      <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="id_set"
+value='{{id}}' placeholder="{{id}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+     <view class="myitem-icon flex-item">
+      <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790001.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>性别</text>
+      </view>
+      <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="gender_set"
+value='{{gender}}' placeholder="{{gender}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+     <view class="my-item flex-wrp" >
+      <view class="myitem-icon flex-item">
+         <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790002.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>所在大学</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="university_set"
+value='{{university}}' placeholder="{{university}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790003.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>年龄</text>
+      </view>
+       <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="age_set"
+value='{{age}}' placeholder="{{age}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790004.png"></image>
+      </view>
+      <view class="myitem-name flex-item">
+        <text>星座</text>
+      </view>
+        <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="constellation_set"
+value='{{constellation}}' placeholder="{{constellation}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+    <view class="my-item flex-wrp">
+    <view class="myitem-icon flex-item">
+         <image src="cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816108790005.png"></image>
+      </view>
+      <view class="myitem-nameHL flex-item">
+        <text>爱好</text>
+      </view>
+      <view class="myitem-nameHL flex-item">
+<input class="input_coding" placeholder-style="color:#e81d98" placeholder-class="placeholderStyle" bindinput="love_set"
+value='{{love}}' placeholder="{{love}}" style='box-shadow: 0 0 1px #e81d98' type='text' maxlength='11'/>
+    </view>
+    </view>
+
+    <view class='information'>
+    <button type="primary" size="default" bindtap="restore_inforamtion"> 保存 </button>
+   </view>
+  </view>

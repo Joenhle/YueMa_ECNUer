@@ -1,0 +1,8 @@
+<!--pages/more_printer/more_printer.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">打印机</view>
+</cu-custom>
+<text class="head">本功能暂服务于华东师范大学</text>
+<text class="body">由于微信不支持小程序上传pdf，word文档， 所以需要打印者请添加QQ1392368311
+</text>

@@ -1,0 +1,24 @@
+/**index.wxss**/
+.test{
+   display: flex;
+  flex-direction:row;
+}
+#login{
+  margin-left: 10px;
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+.steps-bottom.cu-steps .cu-item .num::before {
+  content: "\e668";
+  font-family: 'iconfont';
+}
+.font_shili{
+   margin-left: 250px;
+   font-size: 17px;
+   font-weight: 700;
+   color: rgba(25, 25, 112, 0.6);
+}

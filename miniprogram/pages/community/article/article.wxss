@@ -1,0 +1,205 @@
+@import '../../../style/weui.wxss';
+
+page{
+
+}
+
+
+.page__hd {
+   
+    margin-bottom: -20px;
+}
+.page__bd {
+    padding-bottom: 40px;
+    background-color: var(--white);
+}
+.page__bd_spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page__ft{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+.weui-cell_example:before{
+    left:52px;
+}
+/* .weui-btn{width:184px;} */
+
+
+
+.nickName{
+  margin-left: 55px;
+  font-size: 13px;
+  color: rgba(25,25,112,0.6);
+  font-weight: 700;
+  margin-top: -35px;
+}
+
+.text{
+  font-size: 15px;
+  font-family: "KaiTi";
+  margin-left: -5px;
+}
+
+.image_content{
+ width: 100%;
+ height: auto;
+ display: flex;
+ flex-wrap: wrap;
+ margin-top: -40px;
+ margin-left: 10px;
+}
+.moment_img{
+ width: 110px;
+ height: 110px;
+}
+.image{
+ width:31%;
+ height:auto;
+ margin-top: -5px;
+}
+.post_time{
+  font-size: 13px;
+  margin-left: 55px;
+}
+.footer{
+   margin-top: 5px;
+}
+.yuedushu{
+  font-size: 13px;
+  color: rgba(25, 25, 112, 0.6);
+  font-weight: 700;
+  margin-left: 15px;
+}
+.image_of_dianzan{
+  width: 20px;
+  height: 20px;
+  margin-left: 210px;
+  margin-top: -20px;
+  float: left;
+}
+.dianzanshu{
+   float: left;
+  margin-left: 231px;
+  margin-top: -23px;
+  height: 10px;
+  color: rgba(25, 25, 112, 0.6);
+}
+.image_of_pinglun {
+  width: 20px;
+  height: 20px;
+  margin-left: 255px;
+  margin-top: -20px;
+  float: left;
+}
+.pinglunshu{
+  float: left;
+  margin-left: 277px;
+  margin-top: -24px;
+  height: 10px;
+  color: rgba(25, 25, 112, 0.6);
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+.image_of_post_shanchu{
+  height: 23px;
+  width: 23px;
+  margin-left: 299px;
+  margin-top: -22px;
+  float: left;
+}
+.image_of_sanjiao{
+  height: 15px;
+  width: 15px;
+  margin-left: 28px;
+  margin-top: 1px;
+  margin-bottom: -5px;
+
+}
+.comments{
+    height:auto;
+    background-color: rgba(240, 240, 240, 0.6);
+    margin-left: 15px;
+    width: 305px;
+}
+.comments_of_avatar{
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+.comments_of_text{
+  font-size: 13px;
+  width: 290px;
+  margin-left: 35px;
+  margin-top: -10px;
+  font-weight: 700
+}
+.comments_of_input{
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 0.8em;
+    color: #444;
+    width: 270px;
+    border-radius: 5%;
+    margin-left: 15px;
+}
+.image_of_fabu_view{
+ margin-left: 320px;
+ margin-top: -24px;
+ width: 20px;
+}
+.image_of_fabu{
+ width: 20px;
+ height: 20px;
+ margin-left: -30px;
+ margin-top: 2px;
+}
+.nickName_of_comment{
+  margin-left: 35px;
+  margin-top: -30px;
+  font-size: 11px;
+  color: rgba(25, 25, 112, 0.6);
+  font-weight: 700;
+  width:200px;
+  float: left;
+}
+.comments_of_time{
+  margin-left: 205px;
+  margin-top: -30px;
+  font-size: 11px;
+  width:400px;
+  float: left;
+}
+.image_of_shanchu{
+  height: 20px;
+  width: 20px;
+  margin-left: 275px;
+  margin-top: -20px;
+  float: left;
+}
+.divLine_of_comments{
+  background:#E0E3DA;
+  width: 90%;
+  height: 3rpx;
+  margin-left: 15px;
+  margin-top: 5px;
+}

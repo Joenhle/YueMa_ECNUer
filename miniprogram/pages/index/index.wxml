@@ -1,0 +1,47 @@
+<!--index.wxml-->
+
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">主页</view>
+</cu-custom>
+
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+      size="default"
+    ></button>
+    <view class="userinfo-nickname-wrapper">
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view>
+
+  <!-- 聊天室 -->
+  <view class="uploader">
+    <navigator url="../chat/chat" open-type="navigate" class="uploader-text">
+      <text>聊天室</text>
+    </navigator>
+  </view>
+
+    <!-- 身份验证 -->
+  <view class="uploader">
+    <navigator url="../face_check/face_check" open-type="navigate" class="uploader-text">
+      <text>身份验证</text>
+    </navigator>
+  </view>
+
+   <!-- 社区 -->
+  <view class="uploader">
+    <navigator url="../panel/panel" open-type="navigate" class="uploader-text">
+      <text>社区</text>
+    </navigator>
+  </view>
+
+
+
+</view>

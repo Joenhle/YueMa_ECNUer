@@ -1,0 +1,97 @@
+/* pages/mine_exercise/mine_exercise.wxss */
+/*1.栏目*/
+.section_out{
+  background: rgba(23, 9, 102, 0.822);
+  width: 100%;
+  padding:3% 1% 2% 1%;
+}
+.section_in{
+  padding: 5rpx 0 10rpx 0;
+  border-radius: 4px;
+  background: rgba(243, 215, 3, 0.967);
+  width:98%;
+  font-size: 30rpx;
+  color: #f547bb;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center; 
+}
+/*一条粉线分界*/
+.pinkborder{
+  height: 5rpx;
+  background:rgb(235, 34, 77);
+  width: 100%;
+}
+/*具体数据*/
+.specificData{
+  background:  rgba(23, 9, 102, 0.822);
+  display: flex;
+  flex-direction: column;
+}
+.whiteborder{
+  height: 5rpx;
+  background:rgba(39, 65, 150, 0);
+  width: 100%;
+}
+.oneData{
+  margin-top: 5rpx;
+  display: flex;
+  flex-direction:column;
+}
+.oneDataTime{
+  margin-left: 2%;
+  display: flex;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f547bb;
+  flex-direction:column;
+}
+.oneDataExcat{
+  margin:1% 2% 1%;
+  display: flex;
+  flex-direction:row;
+}
+.exerciseIcon{
+  width: 75rpx;
+  height: 75rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+  border-radius:50%;
+}
+.oneDataKM{
+  margin-top: 10rpx;
+  margin-left: 5%;
+  margin-right: 8%;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #f547bb;
+}
+.startEndIcon{
+  margin-top: 13rpx;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+  border-radius:50%;
+}
+.runtime{
+  margin-left:3rpx;
+  margin-top: 30rpx;
+  font-size: 23rpx;
+  font-weight: bold;
+  color: #f547bb;
+}
+.fastIcon{
+  margin-top: 10rpx;
+  margin-left:6%;
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+  border-radius:50%;
+}
+.whiteborder{
+  height: 2rpx;
+  background: white;
+  width: 100%;
+}

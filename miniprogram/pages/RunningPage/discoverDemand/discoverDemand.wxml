@@ -1,0 +1,106 @@
+<!--miniprogram/pages/RunningPage/discoverDemand/discoverDemand.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">搜寻</view>
+</cu-custom>
+
+
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-item arrow margin-top" bindtap="showModal" data-target="RadioModal">
+    <view class="content">
+      <image src="/images/RunningPage/gender1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">选择性别</text>
+      <text class="text-black" style="margin-left: 50%;">不限</text>
+    </view>
+  </view>
+  <view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <radio-group class="block">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{4}}" wx:for-index="i" wx:key>
+            <label class="flex justify-between align-center flex-sub">
+              <view class="flex-sub">{{gender[i]}}</view>
+              <radio class="round"></radio>
+            </label>
+          </view>
+        </view>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" bindtap="showModal" data-target="ChooseModal">
+    <view class="content">
+      <image src="/images/RunningPage/speed1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">配速</text>
+      <text class="text-black" style="margin-left: 60%;">较慢</text>
+    </view>
+  </view>
+  <view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <view class="cu-bar bg-white">
+        <view class="action text-blue" bindtap="hideModal">取消</view>
+        <view class="action text-green" bindtap="hideModal">确定</view>
+      </view>
+      <view class="grid col-3 padding-sm">
+        <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
+          <button class="cu-btn pink lg block {{item.checked?'bg-pink':'line-pink'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}" style="width:100%; height: 80rpx; font-size: 32rpx;"> {{item.name}}
+            <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}" wx:if="{{item.hot}}">HOT</view>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" bindtap="showModal" data-target="DrawerModalL">
+    <view class="content">
+      <image src="/images/RunningPage/member1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">人数</text>
+      <text class="text-black" style="margin-left: 60%;">4人</text>
+    </view>
+  </view>
+  <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+    <view class="cu-list menu text-left">
+      <view class="cu-item arrow" wx:for="{{5}}" wx:for-index="i" wx:key>
+        <view class="content">
+          <view>{{i+2}}人</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <view class="cu-item arrow" bindtap="showModal" data-target="DrawerModalR">
+    <view class="content">
+      <image src="/images/RunningPage/duration1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">时长</text>
+      <text class="text-black" style="margin-left: 60%;">1小时内</text>
+    </view>
+  </view>
+  <view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+      <view class="cu-list menu text-left">
+        <view class="cu-item arrow" wx:for="{{7}}" wx:for-index="i" wx:key>
+          <view class="content">
+            <view>{{duration[i]}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-item arrow">
+    <view class="content">
+      <image src="/images/RunningPage/time1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">开跑时间</text>
+      <text class="text-black" style="margin-left: 45%;">16:00~20:00</text>
+    </view>
+  </view>
+</view>
+
+<view class="box" style="position: fixed; bottom: 170px; width: 100%;">
+  <view class="cu-bar btn-group">
+    <button class="cu-btn lines-olive shadow round">重置</button>
+    <button class="cu-btn lines-blue shadow round">搜索</button>
+  </view>
+</view>

@@ -1,0 +1,75 @@
+<!--pages/more_usedobject/more_usedobject.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">二手物品</view>
+</cu-custom>
+
+<!--  轮播图  -->
+<swiper indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+  <block wx:for="{{bnrUrl}}" wx:for-index="index">
+    <swiper-item>
+      <image src='{{item.url}}' style="width:100%"  mode='aspectFill'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 图片导航  -->
+<view class="weui-grids">
+     <view class="weui-grid" wx:for="{{routers}}" >
+            <view class='weui-grid__bg' bindtap='choosewhat' data-index="{{item.name}}">
+                <view class="weui-grid__icon">
+                    <image src="../{{item.icon}}" mode="scaleToFill" /><!--scaleToFill 	缩放模式-->
+                </view>
+                <text class="weui-grid__label">{{item.name}}</text>
+             </view>
+     </view>
+</view>
+
+
+ <!--  搜索框  -->
+<view class='search'>
+     <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='search'></input>
+     <image class="" src='../../../images/more/usedobject_5.png' bindtap='search'></image>
+</view>
+
+<!-- 发布需求 -->
+<view class="imagesize">
+<image src='../../../images/more/normal_1.jpg' wx:if="{{click_publish}}"  class='avatar' bindtap='change'> </image>
+<image wx:else  src='../../../images/more/normal_1.jpg'  class='avatar'></image>
+</view>
+
+
+<!--分割线-->
+ <view class='container-line'></view>
+ <!--显示数据-->
+<block wx:for='{{usedobject}}' wx:for-item="item" wx:for-index="idx">
+    <view class='container-line'></view>
+    <view class='container-content'  data-topicId='{{item._id}}' data-openid='{{item._openid}}'>
+     <!--显示头像 -->
+      <view class='user-info'>
+        <image class='user-head' src='{{item.src_of_avatar}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>{{item.poster}}</view>
+          <view class='user-publish-time'>{{item.post_time}}</view>
+        </view>
+        <!--显示每个消息的图标-->
+         <image wx:if="{{item.leibie=='图书'}}" class='user-inform' src='../../../images/more/usedobject_6.png' mode='aspectFill'></image>
+         <image wx:elif="{{item.leibie=='零食'}}" class='user-inform' src='../../../images/more/usedobject_7.png' mode='aspectFill'></image>
+          <image wx:elif="{{item.leibie=='化妆品'}}" class='user-inform' src='../../../images/more/usedobject_8.png' mode='aspectFill'></image>
+           <image wx:elif="{{item.leibie=='衣服'}}" class='user-inform' src='../../../images/more/usedobject_9.png' mode='aspectFill'></image>
+            <image wx:elif="{{item.leibie=='数码'}}" class='user-inform' src='../../../images/more/usedobject_10.png' mode='aspectFill'></image>
+             <image wx:elif="{{item.leibie=='其他'}}" class='user-inform' src='../../../images/more/usedobject_11.png' mode='aspectFill'></image>
+      </view>
+      <view class='content'>  <!--文本和图片 -->
+          <text class='content-text'>{{item.text}}</text>
+          <scroll-view class='content-scroll' scroll-y='true'>
+              <block wx:for="{{item.images}}" wx:for-item="i" >
+              <image class='content-img' src='{{i}}' mode='aspectFill' bindtap='PreviewImage' data-src='{{i}}' data-images='{{item.images}}'></image>
+              </block>
+          </scroll-view>
+      </view>
+    </view>
+      <view class='container-line'></view>  <!-- 尾部的分割线 -->
+</block>
+
+

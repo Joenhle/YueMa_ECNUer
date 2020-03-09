@@ -1,0 +1,6 @@
+<!--miniprogram/pages/RunningPage/rankingList/rankingList.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">陪跑</view>
+</cu-custom>
+<text>miniprogram/pages/RunningPage/rankingList/rankingList.wxml</text>

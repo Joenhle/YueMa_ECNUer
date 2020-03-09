@@ -1,0 +1,39 @@
+/* miniprogram/pages/runMap/runMap.wxss */
+.mainView{
+  display: flex;
+  flex-direction: column;
+}
+
+.mapView{
+  align-items: center;
+}
+
+.fu_runword{
+  display: flex;
+  flex-direction: row;
+}
+.zi_runword{
+  flex: 1;
+}
+
+.start_icon {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 18%;
+  right: 44%;
+}
+.finish_icon {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 18%;
+  right: 11%;
+}
+.start_iconwithfinish {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 18%;
+  left: 11%;
+}
