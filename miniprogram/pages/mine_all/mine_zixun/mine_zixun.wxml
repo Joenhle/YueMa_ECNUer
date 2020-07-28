@@ -1,0 +1,35 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">ECNU最新资讯</view>
+</cu-custom>
+
+
+<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </view>
+  </swiper-item>
+</swiper>
+
+
+
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-title text-orange"></text> 刷新最新资讯
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-cyan shadow" bindtap="toggleDelay">给朕赐上来</button>
+  </view>
+</view>
+
+<view class="padding-sm">
+  <view class="flex justify-around" style="writing-mode:vertical-lr;width:100%">
+    <button bindtap="Goto_Tuisong" data-url="{{item.url}}" class="bg-{{item.color}} cu-btn {{toggleDelay?'animation-slide-bottom':''}} margin-sm basis-sm shadow" style="animation-delay: {{(index+1)*0.1}}s;writing-mode:horizontal-tb" wx:for="{{list}}" wx:key="{{index}}">{{item.text}}</button>
+  </view>
+</view>
+
+
+
+

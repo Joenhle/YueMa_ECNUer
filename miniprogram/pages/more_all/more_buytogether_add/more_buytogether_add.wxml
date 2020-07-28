@@ -1,8 +1,13 @@
+<!--自定义页面-->
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+<view slot='backText'>返回</view>
+<view slot="content">发布信息</view>
+</cu-custom>
+<!--下面信息-->
 <view class='page'>
   <!-- 文本 -->
-  <textarea class='text' maxlength="-1" bindinput="input" placeholder="{{placeholder}}" auto-height/>
+  <textarea class='text' maxlength="-1" bindinput="input" placeholder="{{placeholder}}" style="height:235px" />
   <view class="image_content">
-
   <!-- 展示的图片 -->
     <view class='image' wx:for="{{img_url}}">
       <image class="moment_img" mode="aspectFill" src="{{item}}" bindtap="PreviewImage" data-src="{{item}}" data-images="{{img_url}}" bindlongpress="deleteImage" data-index="{{index}}"></image>
@@ -10,7 +15,7 @@
 
   <!-- 加号的图片-->
     <view class='image' style='display:{{hideAdd?"none":"block"}}'>
-      <image bindtap="chooseimage" class="moment_img" src='../../images/more/normal_1.jpg'></image>
+      <image bindtap="chooseimage" class="moment_img" src='../../../images/more/normal_1.jpg'></image>
     </view>
 
   <!-- 分界线 -->

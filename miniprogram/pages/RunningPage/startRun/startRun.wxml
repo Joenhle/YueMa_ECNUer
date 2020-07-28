@@ -1,0 +1,76 @@
+<cu-custom bgColor="bg-pink" isBack="{{start_iconbool}}">
+	<view slot="backText">返回</view>
+	<view slot="content">开跑</view>
+</cu-custom>
+<!--背景-->
+<view>
+	<image src="/images/RunningPage/running/bgd-1.jpg" style="position:fixed;width:100%;height:100%;background-size:100% 100%; z-index: -2;" mode="aspectFill"></image>
+</view>
+<!--在背景再加一层灰白-->
+<view class="outermostfu" >
+	<view style="flex:10"></view>
+	<view class="greyWhitefu" style="flex:80;background-image:url('images/RunningPage/running/bgd-1.png');background-repeat:no-repeat;background-size:100% 100%;position:relative;height:100%;width:100%;z-index:-1;">
+		<view style="flex:5"></view>
+		<!--公里数+公里-->
+		<view style="flex: 10;display: flex;flex-direction: row;">
+			<view class="" style="flex:0.77;font-size:70px;text-align:right;">
+				<text class="text-black text-bold ">{{meters}}</text>
+			</view>
+			<view class="" style="flex:0.23;text-align:left;margin-top:22%">
+				<text class="text-grey text-bold " >公里</text>
+			</view>
+		</view>
+		<!--位置-->
+		<view style="flex: 10;z-index: 1;" >
+			<image class='position_icon' src="/images/RunningPage/running/position1.png" bindtap="TorunMap"></image>
+		</view>
+		<!--三个图标-->
+		<view class="fu_runword" style="flex:5">
+			<view class="zi_runword" style="margin-left: 12%;">
+				<image class='' src="/images/RunningPage/running/peisu.png" style="width: 80rpx;height: 80rpx;" mode="aspectFill"></image>
+			</view>
+			<view class="zi_runword" style="margin-left: 10%;">
+				<image class='' src="/images/RunningPage/running/time.png" style="width: 80rpx;height: 80rpx;" mode="aspectFill"></image>
+			</view>
+			<view class="zi_runword" style="margin-left: 10%;">
+				<image class='' src="/images/RunningPage/running/energy.png" style="width: 80rpx;height: 80rpx;" mode="aspectFill"></image>
+			</view>
+		</view>
+		<!--数字-->
+		<view class="fu_runword" style="font-size: 50rpx;text-align:center;flex:5;">
+			<view class=" zi_runword" style="margin-left:5%;">
+				<text class="text-black text-bold" style="">{{speed}}</text>
+			</view>
+			<view class="zi_runword">
+				<text class="text-black text-bold">{{time}}</text>
+			</view>
+			<view class=" zi_runword">
+				<text class="text-black text-bold">{{energy}}</text>
+			</view>
+		</view>
+		<!--单位-->
+		<view class="fu_runword" style="font-size: 22rpx;text-align:center;flex:3;">
+			<view class=" zi_runword">
+				<text class="text-grey text-bold" style="">分钟/公里</text>
+			</view>
+			<view class=" zi_runword">
+				<text class="text-grey text-bold">用时</text>
+			</view>
+			<view class=" zi_runword">
+				<text class="text-grey text-bold">千卡</text>
+			</view>
+		</view>
+	</view>
+	<view style="flex:10"></view>
+</view>
+
+<view wx:if="{{start_iconbool}}">
+	<image class='start_icon' src="/images/RunningPage/running/start.png" bindtap="starRun"></image>
+</view>
+<view wx:if="{{pause_iconbool}}">
+	<image class="start_icon" src="/images/RunningPage/running/pause.png" bindtap="stopRun"></image>
+</view>
+<view wx:if="{{startfinish_iconbool}}">
+	<image class="start_iconwithfinish" src="/images/RunningPage/running/continue.png" bindtap="starRun"></image>
+	<image class="finish_icon" src="/images/RunningPage/running/finish.png" bindtap="finishRun"></image>
+</view>

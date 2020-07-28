@@ -4,12 +4,18 @@
   <view slot="backText">返回</view>
   <view slot="content">身份验证</view>
 </cu-custom>
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>注册成功，正在跳转</view>
+</view>
+
 <view class="container">
-  <view class="{{show_camera?'hide':'show'}} padding-xl radius shadow-blur bg-red margin-top bg-img" style="height:300px;margin-top:-1px;margin-bottom:-299px;width:100%;background-image:url({{src ==''?'https://7869-xiaohuang-evwg7-1301134245.tcb.qcloud.la/%E8%AF%81%E4%BB%B6%E7%A4%BA%E4%BE%8B.jpg?sign=641abfc460fa865f1eb42f8927ba641c&t=1582106832' : src}});">
+  <view class="{{show_camera?'hide':'show'}} padding-xl radius shadow-blur bg-red margin-top bg-img" style="height:300px;margin-top:-1px;margin-bottom:-299px;width:100%;background-image:url({{src ==''?'https://7869-xiaohuang-evwg7-1301134245.tcb.qcloud.la/%E7%A4%BA%E4%BE%8B2.png?sign=cae2aa39d44c408eb3995ea149470990&t=1585811070' : src}});">
     <view class="{{src==''?'show':'hide'}} font_shili">示例</view>
   </view>
 
-  <camera class="{{show_camera?'show':'hide'}}" device-position="{{device_position}}" flash="off" binderror="error" style="width: 100%; height: 300px;margin-bottom:-300px"></camera>
+  <camera class="{{show_camera?'show':'hide'}}" style="width: 100%;margin-bottom:-300px ;height:{{is_register_or_login=='校园卡注册'?'250px':'300px'}}" device-position="{{device_position}}" flash="off" binderror="error"></camera>
   <view scroll-y class="scrollPage">
     <view class='nav-list'>
       <view class="nav-li bg-{{item.color}} {{item.leibie=='camera'? show_register_and_login?'show':'hide' :show_cansole_and_accurate?'show':'hide'}}" bindtap="click_of_{{item.leibie}}" hover-class='none' data-leibie="{{item.title}}" wx:for="{{elements}}" wx:key>

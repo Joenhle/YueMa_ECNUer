@@ -80,7 +80,6 @@
   display: block;
   width: 100%;
   height: 100%;
-  box-sizing: content-box;
 }
 .weui-grid__icon + .weui-grid__label {
   margin-top: 5px;
@@ -95,155 +94,123 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
-
 /* 2搜索框样式 */
-.search
-{
+.search{
   display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;/*居中对齐弹性盒的各项 */
-  width:95%;/*输入框宽度*/
+  width:100%;/*输入框宽度*/
   height:80rpx;/*输入框高度*/
   background-color:rgb(248, 246, 246);/*背景颜色*/
   margin-top: 2%;/*与顶部距离*/
   border:1rpx solid rgb(245, 11, 120);/*边框的颜色*/
   border-radius: 5rpx;/*边框粗细*/
-  margin-bottom: 2%;
-  box-sizing: content-box;
+  margin-bottom: 2%
 }
-
-/* 搜索框提示文字样式 */
-.search input
-{
+.search input{
+  width: 90%;
   font-size:35rpx;/*字体大小*/
   padding-left:30rpx; /*与字体左边的距离*/
 }
-
-/* 搜索框小图标 */
-.search image
-{ 
-  width:60rpx;
-  height:60rpx;
+.search image{ 
+  width:65rpx;
+  height:65rpx;
   padding-right:20rpx;
-  box-sizing: content-box;
 }
-
-/*包含的内容（图片和文字等）*/
-.container-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 5px 4px 3px 2px; /*上下左右的边距*/
-  margin: 0 auto;
-  background-color: pink;
-}
-
-/*分界线*/
-.container-line{
-  width: 100%;
-  height: 3rpx;
-  background-color: rgba(248, 60, 132, 0.89);
-}
-
-/*用户的信息*/
-.user-info {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-}
-
-/*用户的头像*/
-.user-head {
-  margin-left: 5px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  background-color: #ccc;
-}
-
-/*用户的时间和名字*/
-.user-name-time {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin-top: 5px;
-  margin-left: 10px;
-}
-
-/*用户的名字*/
-.user-name {
-  font-size: 15px;
-  color: rgb(69, 180, 245);
-  font-weight: bold;
-}
-
-/*用户的发布时间*/
-.user-publish-time {
-  font-size: 15px;
-  color: rgb(238, 45, 119);
-}
-
-/*内容*/
-.content {
-  display: flex;
-  flex-direction: column;
-  margin-right: 5%;
-  margin-top: 2px;
-}
-
-/*允许竖向华东*/
-.content-scroll {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-
-/*发布信息的字体*/
-.content-text {
-  font-size: 18px;
-  color: rgb(104, 90, 228);
-  margin-left: 10px;
-}
-
-/*发布信息的图像*/
-.content-img {
-  width: 97px;
-  height: 97px;
-  margin-left: 4px;
-  margin-top: 4px;
-  background-color: #999;
-}
-
-  /*3.图片圆形显示*/
- .avatar{
-    height: 50px;
-    width: 50px;
+/*3.发布的按钮*/
+.avatar{
+    height: 70rpx;
+    width: 70rpx;
     border-radius: 25px;
-    background: pink;
-    position: relative;                                                                        
+    background: pink;                                                                   
     display: flex;
 }
-
 .imagesize{
-  z-index: 10;
+  z-index:10;
   position:fixed; 
   bottom:3%;
   left:45%;
   display: flex;
   justify-content: center;
 }
-.imagesize image { 
-  width:70rpx;
-  height:70rpx;            
-  }
+/*4.包含的内容头像，时间和提示图片*/
+.container-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 4px 3px 2px; /*上下左右的边距*/
+  margin: 0 auto;
 
-  /*提示的图标，如奶茶，外卖的图标*/
-  .user-inform{
+}
+.container-line{
+  width: 100%;
+  height: 3rpx;
+  background-color: rgba(248, 60, 132, 0.89);
+}
+.user-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.user-head {
+  margin-left: 5px;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.user-name-time {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.user-name {
+  font-size: 15px;
+  color: rgb(69, 180, 245);
+  font-weight: bold;
+}
+.user-inform{
   margin-right: 10px;
   width:90rpx;
   height:90rpx; 
-  }
-/* pages/more_usedobject/more_usedobject.wxss */
+}
+.user-publish-time {
+  font-size: 15px;
+  color: rgb(238, 45, 119);
+}
+/*5.发布的内容*/
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+  margin-top: 2px;
+}
+.content-text {
+  font-size: 32rpx;
+
+  margin-left: 20rpx;
+  display: -webkit-box;  /*设置为弹性盒子*/
+  -webkit-line-clamp: 5;  /*最多显示5行*/
+  -webkit-box-orient: vertical;
+  overflow: hidden;  /*超出隐藏*/
+  text-overflow: ellipsis;  /*超出显示为省略号*/
+  word-break: break-word;  /*强制英文单词自动换行*/
+}
+.content-scroll {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.content-img {
+  width:31%;
+  height:200rpx;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: #999;
+}
+

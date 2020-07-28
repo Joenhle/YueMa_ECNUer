@@ -1,28 +1,38 @@
+<view >
+	<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+		<view slot="backText" >返回</view>
+		<view slot="content">发布</view>
+	</cu-custom>
+</view>
 
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">发布</view>
-</cu-custom>
+
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+	<image src='../../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+	<view class='gray-text'>客官请稍等</view>
+</view>
+
 
 <view class='page'>
-  <textarea class='text' maxlength="-1" bindinput="input" placeholder="{{placeholder}}" auto-height/>
-  <view class="image_content">
+	<textarea class='text' maxlength="-1" bindinput="input" placeholder="{{placeholder}}" style="height:235px" />
+
+	<view class="image_content">
     <view class='image' wx:for="{{img_url}}">
       <image class="moment_img" mode="aspectFill" src="{{item}}" bindtap="PreviewImage" data-src="{{item}}" data-images="{{img_url}}" bindlongpress="deleteImage" data-index="{{index}}"></image>
     </view>
-    <view class='image' style='display:{{hideAdd?"none":"block"}}'>
-      <image bindtap="chooseimage" class="moment_img" src='cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/add_publish.jpg'></image>
+    <view class='image' style='display:{{img_url.length>=9?"none":"block"}}'>
+      <image bindtap="chooseimage" class="moment_img" src='../../../images/logo/add_publish.jpg'></image>
     </view>
 
-    <view class="divLine {{leibie=='jingyan'?'show':'hide'}}"></view>
-    <view class="section {{leibie=='jingyan'?'show':'hide'}}" style="height:36px;margin-bottom:3px;margin-top:-8px;width:100%">
+    <view class="divLine {{leibie=='experience'?'show':'hide'}}" style="margin-top:12px"></view>
+    <view class="section {{leibie=='experience'?'show':'hide'}}" style="height:36px;margin-bottom:3px;margin-top:-8px;width:100%">
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
           选择类别：{{array[index]}}
         </view>
       </picker>
     </view>
-    <view class="divLine {{leibie=='jingyan'?'show':'hide'}}"></view>
+    <view class="divLine {{leibie=='experience'?'show':'hide'}}"></view>
 
   </view>
   <button bindtap="send" type="default" style='margin-right:5px;margin-left:5px;width:100%'>发布</button>

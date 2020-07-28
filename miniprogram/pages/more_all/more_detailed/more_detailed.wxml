@@ -1,0 +1,45 @@
+<!--自定义页面-->
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot='backText'>返回</view>
+  <view slot="content">详细页面</view>
+</cu-custom>
+<!--分割线-->
+<view class='container-line'></view>
+<view style="padding:14px"> 
+<view class='container-content'>
+     <!--显示头像 -->
+      <view class='user-info'>
+        <image class='user-head' src='{{src_of_avatar}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>{{poster}}</view>
+          <view class='user-publish-time'>{{post_time}}</view>
+       </view>
+         <image wx:if="{{leibie=='奶茶'}}" class='user-inform' src='../../../images/more/buytogether_1.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='外卖'}}" class='user-inform' src='../../../images/more/buytogether_2.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='旅行'}}" class='user-inform' src='../../../images/more/buytogether_3.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='淘宝'}}" class='user-inform' src='../../../images/more/buytogether_4.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='快递代送'}}" class='user-inform' src='../../../images/more/buytogether_5.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='其他'}}" class='user-inform' src='../../../images/more/buytogether_6.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='图书'}}" class='user-inform' src='../../../images/more/usedobject_6.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='零食'}}" class='user-inform' src='../../../images/more/usedobject_7.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='化妆品'}}" class='user-inform' src='../../../images/more/usedobject_8.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='衣服'}}" class='user-inform' src='../../../images/more/usedobject_9.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='数码'}}" class='user-inform' src='../../../images/more/usedobject_10.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='绩点升学'}}" class='user-inform' src='../../../images/more/question_1.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='求职就业'}}" class='user-inform' src='../../../images/more/question_2.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='考研大军'}}" class='user-inform' src='../../../images/more/question_3.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='出国升学'}}" class='user-inform' src='../../../images/more/question_4.png' mode='aspectFill'></image>
+         <image wx:elif="{{leibie=='修理物件'}}" class='user-inform' src='../../../images/more/question_5.png' mode='aspectFill'></image>
+</view> 
+<!--文本和图片 -->
+<view class='content'>
+          <text class='content-text'>{{text}}</text>
+          <scroll-view class='content-scroll' scroll-y='true'>
+              <block wx:for="{{images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill' bindtap='PreviewImage' data-src='{{i}}' data-images='{{images}}'></image>
+              </block>
+          </scroll-view>
+      </view>
+      <image wx:if="{{_openid==link_openid}}" class='user-delete' src='../../../images/mine/delete.png' bindtap='delete' mode='aspectFill'></image>
+</view>
+</view>

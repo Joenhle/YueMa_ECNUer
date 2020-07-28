@@ -1,70 +1,108 @@
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">我的</view>
-</cu-custom>
 <!--上部信息-->
+ <cu-custom bgColor="bg-gradual-pink">
+    <view slot="content">我的</view>
+  </cu-custom>
 <!-- 第一次进入需要使用 button 来授权登录 -->
-<button wx:if="{{canIUse&&once_login==true}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<view class="animation-slide-bottom">
+    <view wx:if="{{canIUse&&navigate_page==false}}">
+    <button class="bg-white margin shadow-md radius-lg padding" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+         <image class="user-avatar" src="../../../images/mine/wechat.png"></image>
+          <view class='user-warn'>请绑定账户后继续</view>
+          <view class='user-warn2'>点击此处绑定</view>
+        </button>
+    </view>
 <!--否则显示图像-->
-<view wx:else class="user flex-wrp" >
-   <!--头部图像-->
-    <view  class="avatar flex-item">
-     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+   <view wx:else  class="bg-white margin shadow-md padding radius-lg"  >
+    <view class="user-info">
+      <view class="info-hd">
+       <image src="{{avatarUrl}}" class="user-avatar" />
+        <view class="user-title">
+          <text class="user-name">{{userInfo.nickName}}</text>
+          <text class="user-id">{{xuehao}}</text>
+        </view>
+        <view class="time-box">
+          <text class="time-term">{{month_number>2 && month_number<9 ? '下学期':'上学期'}}</text>
+          <text class="time-now">{{month}} - {{weekday}}</text>
+        </view>
+      </view>
+      <view class="info-bd" wx:if="{{1==1}}">
+        <view class="info-bd-left">
+          <text class="user-text">年级：{{grade}}</text>
+          <text class="user-text">宿舍：{{sushe}}</text>
+        </view>
+        <view class="info-bd-right">
+ <text class="user-text">学院：{{college}}</text>
+  <text class="user-text">专业： {{major}}</text>
+        </view>
+      </view>
     </view>
-    <view class="user-info flex-item">
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="edit">查看或编辑个人主页</text>
+  </view>
+  </view>
+<!--下面的页面-->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <!--1.签到-->
+    <view class="cu-item ">
+      <view class="content" catchtap="sign_in">
+        <text class="cuIcon-my text-pink"></text>
+        <text class="text-grey">签到</text>
+      </view>
     </view>
-</view>
 
-  <!--下部信息-->
-  <view class="my">
-    <view class="my-item flex-wrp" catchtap="sign_in">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/sign_in.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>签到</text>
+     <!--2.信用积分-->
+    <view class="cu-item">
+      <view class="content" catchtap="credit_score" hover-class="none">
+        <text class="cuIcon-coin text-cyan"></text>
+        <text class="text-grey">信用积分</text>
       </view>
     </view>
-    <view class="my-item flex-wrp" catchtap="basic_information">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/basic_information.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>基本资料</text>
-      </view>
-    </view>
-    <view class="my-item flex-wrp" catchtap="credit_score">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/credit_score.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>信用积分</text>
+
+    <!--3.基本资料-->
+    <view class="cu-item arrow">
+      <view class="content"  catchtap="basic_information" hover-class="none" >
+         <text class="cuIcon-edit text-manve"></text>
+        <text class="text-grey">基本资料</text>
       </view>
     </view>
-    <view class="my-item flex-wrp" catchtap="leaderboard">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/leaderboard.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>排行榜</text>
-      </view>
-    </view>
-     <view class="my-item flex-wrp" catchtap="history">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/history.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>发布历史</text>
+   
+    <!--4.排行榜-->
+    <view class="cu-item arrow">
+      <view class="content" catchtap="leaderboard">
+        <text class="cuIcon-upstage text-red"></text>
+        <text class="text-grey">排行榜</text>
       </view>
     </view>
-     <view class="my-item flex-wrp" catchtap="exercise">
-      <view class="myitem-icon flex-item">
-        <image src="../../../images/mine/exercise.png"></image>
+    <!--5.发布历史-->
+    <view class="cu-item arrow">
+      <view class="content" catchtap="history">
+        <text class="cuIcon-upload text-purple"></text>
+        <text class="text-grey">我的发布</text>
       </view>
-      <view class="myitem-name flex-item">
-        <text>运动历史</text>
+    </view>
+     <!--6.运动数据-->
+    <view class="cu-item arrow">
+      <view class="content" catchtap="exercise">
+        <text class="cuIcon-activity text-purple"></text>
+        <text class="text-grey">运动历史</text>
+      </view>
+    </view>
+     <view class="cu-item arrow">
+      <view class="content" catchtap="shouquan">
+        <text class=".cuIcon-explore text-purple"></text>
+        <text class="text-grey">授权选项</text>
+      </view>
+    </view>
+    <!--7.意见反馈-->
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="feedback">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+    <!--8.关于-->
+    <view class="cu-item arrow">
+      <view class="content" catchtap="about">
+        <text class="cuIcon-magic text-yellow"></text>
+        <text class="text-grey">关于</text>
       </view>
     </view>
   </view>

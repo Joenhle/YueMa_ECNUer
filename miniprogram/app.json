@@ -1,24 +1,34 @@
 {
   "pages": [
+    
+    "pages/mine_all/mine/mine",
+    
     "pages/community/panel/panel",
+    "pages/face_check/face_check",
+    "pages/rank/rank",
     "pages/index/index",
     "pages/chat/chat",
     "pages/chat_friends/chat_friends",
-    "pages/face_check/face_check",
-   
+    "pages/about/about",
     "pages/community/article/article",
     "pages/community/publish/publish",
-    "pages/mine_all/mine/mine",
+
+
+    
+    "pages/mine_all/mine_about/mine_about",
     "pages/mine_all/mine_history/mine_history",
+    "pages/mine_all/mine_zixun/mine_zixun",
     "pages/mine_all/mine_exercise/mine_exercise",
-    "pages/mine_all/mine_leaderboard/mine_leaderboard",
-     "pages/mine_all/mine_basic_information/mine_basic_information",
+    "pages/mine_all/mine_basic_information/mine_basic_information",
+    "pages/mine_all/mine_basic_information_rewrite/mine_basic_information_rewrite",
+
     "pages/more_all/more/more",
     "pages/more_all/more_usedobject/more_usedobject",
     "pages/more_all/more_question/more_question",
     "pages/more_all/more_buytogether/more_buytogether",
-    "pages/more_all/more_printer/more_printer",
-    "pages/more_all/more_market/more_market",
+    "pages/more_all/more_buytogether_add/more_buytogether_add",
+    "pages/more_all/more_detailed/more_detailed",
+
 
     "pages/RunningPage/MainRun/MainRun",
     "pages/RunningPage/rankingList/rankingList",
@@ -27,10 +37,13 @@
     "pages/RunningPage/runMap/runMap",
     "pages/RunningPage/basicInfo/basicInfo",
     "pages/RunningPage/discoverDemand/discoverDemand",
-    "pages/RunningPage/test/test"
+    "pages/RunningPage/startRun/startRun",
+    "pages/PlayingballPage/ballDemandPost/ballDemandPost",
+    "pages/PlayingballPage/createballDemand/createballDemand",
+    "pages/PlayingballPage/discoverballDemand/discoverballDemand",
+    "pages/PlayingballPage/MainBall/MainBall"
+ 
 
-
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,25 +53,24 @@
     "navigationStyle": "custom"
   },
   "tabBar": {
-    "color": "#444",
+  
     "selectedColor": "#d6204b",
-    "backgroundColor": "#e89abe",
+    "backgroundColor": "bg-gradual-pink",
     "borderStyle": "white",
     "list": [
-      {
-        "pagePath": "pages/community/panel/panel",
-        "text": "社区",
-        "iconPath": "images/main_page/community_communication.png",
-        "selectedIconPath": "images/main_page/community_communicationHL.png"
-      },
-
+    
       {
         "pagePath": "pages/RunningPage/MainRun/MainRun",
+        "text": "约跑",
+        "iconPath": "images/main_page/running.png",
+        "selectedIconPath": "images/main_page/runningHL.png"
+      },
+      {
+        "pagePath": "pages/PlayingballPage/MainBall/MainBall",
         "text": "约球",
         "iconPath": "images/main_page/basketball.png",
         "selectedIconPath": "images/main_page/basketballHL.png"
       },
-    
       {
         "pagePath": "pages/more_all/more/more",
         "text": "更多",
@@ -66,10 +78,10 @@
         "selectedIconPath": "images/main_page/manyHL.png"
       },
       {
-        "pagePath": "pages/RunningPage/MainRun/MainRun",
-        "text": "约跑",
-        "iconPath": "images/main_page/running.png",
-        "selectedIconPath": "images/main_page/runningHL.png"
+        "pagePath": "pages/community/panel/panel",
+        "text": "社区",
+        "iconPath": "images/main_page/community_communication.png",
+        "selectedIconPath": "images/main_page/community_communicationHL.png"
       },
       {
         "pagePath": "pages/mine_all/mine/mine",
@@ -82,5 +94,10 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }

@@ -1,9 +1,9 @@
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-  <view slot="backText">运动历史</view>
-  <view slot="content">我的</view>
-</cu-custom>
-
 <!--pages/mine_exercise/mine_exercise.wxml-->
+<!--自定义页面-->
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+<view slot='backText'>返回</view>
+<view slot="content">跑步历史</view>
+</cu-custom>
 <!--显示本月总数据-->
 <view class="section_out">
     <view class="section_in">
@@ -14,23 +14,23 @@
 <view class="pinkborder"></view>
 <!--显示具体数据-->
 <view class='specificData'>
-   <view wx:for="{{historyExercise}}" wx:key="{{index}}"  class="item">
+   <view wx:for="{{run_records}}" wx:key="{{index}}"  class="item">
    <view wx:if="{{index==monthExerciseTime}}" class="section_out">
-   <view class="section_in">
-   <text decode="{{true}}">上个月及以前的数据</text>
-   </view>
+        <view class="section_in">
+        <text decode="{{true}}">上个月及以前的数据</text>
+        </view>
    </view>
    <view class='oneData'>
-   <view class='oneDataTime'><!--时间列排列-->
-   <text>{{monthData[index]}}</text>
-   <view class='oneDataExcat'><!--确切数据-->
-   <image wx:if="{{item.mileage>=1&&item.pace<=5.8}}" class='exerciseIcon' src='../../../images/mine/run.png'/>
-   <image wx:else class='exerciseIcon' src='../../../images/mine/walk.png'/>
-   <text class='oneDataKM'>{{item.mileage}}KM</text>
-   <image class="startEndIcon"  src='../../../images/mine/startEnd.png'/>
-   <text class="runtime">{{startEndTime[index]}}</text>
-   <image class="fastIcon"  src='../../../images/mine/fast.png'/>
-   <text class="runtime">{{item.pace}}分/KM</text>
+        <view class='oneDataTime'><!--时间列排列-->
+        <text>{{monthData[index]}}</text>
+        <view class='oneDataExcat'><!--确切数据-->
+        <image wx:if="{{item.mileage>=1&&item.pace<=5.8}}" class='exerciseIcon' src='../../../images/mine/run.png'/>
+        <image wx:else class='exerciseIcon' src='../../../images/mine/walk.png'/>
+        <text class='oneDataKM'>{{item.mileage}}KM</text>
+        <image class="startEndIcon"  src='../../../images/mine/startEnd.png'/>
+        <text class="runtime">{{startEndTime[index]}}</text>
+        <image class="fastIcon"  src='../../../images/mine/fast.png'/>
+        <text class="runtime">{{item.pace}}分/KM</text>
    </view>
    <view class="whiteborder"></view>
    </view>

@@ -10,17 +10,17 @@
     <view class="content">
       <image src="/images/RunningPage/gender1.png" class="png" mode="aspectFit"></image>
       <text class="text-black">选择性别</text>
-      <text class="text-black" style="margin-left: 50%;">不限</text>
+      <text class="text-black" style="margin-left: 50%;">{{genderarr[genderi]}}</text>
     </view>
   </view>
   <view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog" catchtap>
-      <radio-group class="block">
+      <radio-group class="block" bindchange="genderChange">
         <view class="cu-list menu text-left">
           <view class="cu-item" wx:for="{{4}}" wx:for-index="i" wx:key>
             <label class="flex justify-between align-center flex-sub">
-              <view class="flex-sub">{{gender[i]}}</view>
-              <radio class="round"></radio>
+              <view class="flex-sub" value="{{genderarr[i]}}">{{genderarr[i]}}</view>
+              <radio class="round" value="{{i}}"></radio>
             </label>
           </view>
         </view>
@@ -32,7 +32,8 @@
     <view class="content">
       <image src="/images/RunningPage/speed1.png" class="png" mode="aspectFit"></image>
       <text class="text-black">配速</text>
-      <text class="text-black" style="margin-left: 60%;">较慢</text>
+      <text class="text-black" wx:if="{{speedi.length>1}}"  style="margin-left: 60%;">....</text>
+      <text class="text-black" wx:else style="margin-left: 60%;">{{speedbox[speedi[0] ].name}}</text>
     </view>
   </view>
   <view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
@@ -42,9 +43,8 @@
         <view class="action text-green" bindtap="hideModal">确定</view>
       </view>
       <view class="grid col-3 padding-sm">
-        <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
-          <button class="cu-btn pink lg block {{item.checked?'bg-pink':'line-pink'}}" bindtap="ChooseCheckbox" data-value="{{item.value}}" style="width:100%; height: 80rpx; font-size: 32rpx;"> {{item.name}}
-            <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}" wx:if="{{item.hot}}">HOT</view>
+        <view wx:for="{{speedbox}}" class="padding-xs" wx:key="{{index}}">
+          <button class="cu-btn pink lg block {{item.checked?'bg-pink':'line-pink'}}" bindtap="ChooseSpeedbox" data-value="{{item.value}}" style="width:100%; height: 80rpx; font-size: 32rpx;"> {{item.name}}
           </button>
         </view>
       </view>
@@ -55,52 +55,55 @@
     <view class="content">
       <image src="/images/RunningPage/member1.png" class="png" mode="aspectFit"></image>
       <text class="text-black">人数</text>
-      <text class="text-black" style="margin-left: 60%;">4人</text>
+      <text class="text-black" style="margin-left: 60%;">{{numpeoplearr[numpeoplei]}}</text>
     </view>
   </view>
   <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
-  <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
-    <view class="cu-list menu text-left">
-      <view class="cu-item arrow" wx:for="{{5}}" wx:for-index="i" wx:key>
-        <view class="content">
-          <view>{{i+2}}人</view>
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
-
-  <view class="cu-item arrow" bindtap="showModal" data-target="DrawerModalR">
-    <view class="content">
-      <image src="/images/RunningPage/duration1.png" class="png" mode="aspectFit"></image>
-      <text class="text-black">时长</text>
-      <text class="text-black" style="margin-left: 60%;">1小时内</text>
-    </view>
-  </view>
-  <view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
       <view class="cu-list menu text-left">
-        <view class="cu-item arrow" wx:for="{{7}}" wx:for-index="i" wx:key>
-          <view class="content">
-            <view>{{duration[i]}}</view>
+        <view class="cu-item arrow " wx:for="{{numpeoplearr.length}}" wx:for-index="i" wx:key>
+          <view class="content" >
+            <button class="text-black" data-numpeople="{{i}}" bindtap="numpeopleChange" style="font-size: 32rpx;font-weight: 500;">{{numpeoplearr[i]}}</button>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <view class="cu-item arrow">
+  <view class="cu-item arrow" bindtap="showModal" data-target="DrawerModalR">
     <view class="content">
-      <image src="/images/RunningPage/time1.png" class="png" mode="aspectFit"></image>
-      <text class="text-black">开跑时间</text>
-      <text class="text-black" style="margin-left: 45%;">16:00~20:00</text>
+      <image src="/images/RunningPage/duration1.png" class="png" mode="aspectFit"></image>
+      <text class="text-black">时长</text>
+      <text class="text-black" style="margin-left: 60%;">{{durationarr[durationi]}}</text>
     </view>
   </view>
+  <view class="cu-modal drawer-modal justify-end {{modalName=='DrawerModalR'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog basis-lg" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+      <view class="cu-list menu text-left">
+        <view class="cu-item arrow" wx:for="{{durationarr.length}}" wx:for-index="i" wx:key>
+          <view class="content">
+            <button class="text-black" data-duration="{{i}}" bindtap="durationChange" style="font-size: 32rpx;font-weight: 500;">{{durationarr[i]}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-form-group">
+    <image src="/images/RunningPage/time1.png" class="png" mode="aspectFit" style="width: 1.6em;height: 1.6em;margin-right: 10rpx;"></image>
+		<view class="title">时间选择</view>
+		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{multiIndex}}"
+		 range="{{multiArray}}">
+			<view class="picker">
+				{{multiArray[0][multiIndex[0]]}}~{{multiArray[1][multiIndex[1]]}}
+			</view>
+		</picker>
+	</view>
 </view>
 
 <view class="box" style="position: fixed; bottom: 170px; width: 100%;">
   <view class="cu-bar btn-group">
-    <button class="cu-btn lines-olive shadow round">重置</button>
-    <button class="cu-btn lines-blue shadow round">搜索</button>
+    <button class="cu-btn lines-olive shadow round" bindtap="resetSearch">重置</button>
+    <button class="cu-btn lines-blue shadow round" bindtap="searchPost">搜索</button>
   </view>
 </view>

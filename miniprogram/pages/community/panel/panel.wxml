@@ -1,9 +1,12 @@
-
-
-
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
   <view slot="content">社区</view>
 </cu-custom>
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='../../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>客官请稍等</view>
+</view>
+
 <view class="page">
 
   <view class="swiper2_view">
@@ -48,10 +51,10 @@
                   <navigator url="../article/article?post_id={{ne[i]._id}}&image_dianzan_src={{dianzan_src_list[i]}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="nickName">{{item.poster}}</view>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="margin-left:-80px;margin-top:-35px;width:40px;height:40px">
-                      <image class="weui-media-box__thumb" style="margin-left:-325px;border-radius:15%" src="{{item.src_of_avatar}}" />
+                      <image catchtap="Click_touxiang" data-userOpenid="{{item._openid}}" class="weui-media-box__thumb" style="margin-left:-325px;border-radius:15%" src="{{item.src_of_avatar}}" />
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="margin-top:32px;margin-left:-18px">
-                      <view class="weui-media-box__desc" style="width:300px;margin-left:-160px;font-weight:555;font-family:宋体"><text>{{item.text}}</text></view>
+                      <view class="weui-media-box__desc" style="width:300px;margin-left:-160px;font-weight:555;font-family:宋体"><text style="word-break: break-word;">{{item.text}}</text></view>
                     </view>
                   </navigator>
 
@@ -66,16 +69,14 @@
                     <view class="weui-media-box__info__meta">{{item.post_time}}</view>
                   </view>
                   <view class="footer">
-                    <view class="yuedushu">阅读数{{number_of_visit_list[i]}}</view>
+                    <view class="yuedushu">阅读数{{item.number_of_visit}}</view>
                     <image class="image_of_dianzan" src="{{dianzan_src_list[i]}}" bindtap="Dianzan" data-index="{{i}}"></image>
                     <view class="dianzanshu">{{item.dianzan_list.length}}</view>
                     <image class="image_of_pinglun" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论.png" bindtap="Showpinglun" data-index="{{i}}"></image>
-                    <image class="image_of_post_shanchu {{ne[i]._openid==openid?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除(2).png" bindtap="Post_of_shanchu" data-i="{{i}}"></image>
+                    <image class="image_of_post_shanchu {{ne[i]._openid==openid?'show':'hide'}}" src="../../../images/logo/delete.png" bindtap="Post_of_shanchu" data-i="{{i}}"></image>
                     <view class="pinglunshu">{{ne[i].comments.length}}</view>
 
-                    <view class="image_of_sanjiao_view">
-                      <image class="image_of_sanjiao" src="{{showview[i]?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论三角.png':''}}"></image>
-                    </view>
+                    
                     <view class="comments {{showview[i]?'show':'hide'}}" wx:for="{{ne[i].comments}}" wx:for-index="j">
                       <view class="comments_of_avatar">
                         <image class="weui-media-box__thumb" style="border-radius:100%" src="{{item[1]}}" />
@@ -83,7 +84,7 @@
                       <view class="nickName_of_comment">{{item[0]}}</view>
                       <view class="comments_of_time">{{item[3]}}</view>
                       <view class="comments_of_text">{{item[2]}}</view>
-                      <view class="image_of_shanchu_view ne[i]._openid==openid?'show':item[4]==openid?'show':'hide'">
+                      <view class="image_of_shanchu_view {{item[4]==openid?'show':'hide'}}">
                         <image class="image_of_shanchu" bindtap="Comments_shanchu" data-i="{{i}}" data-j="{{j}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除.png"></image>
                       </view>
                       <view class="divLine_of_comments"></view>
@@ -107,19 +108,15 @@
             </view>
           </view>
         </view>
-        <navigator url='../publish/publish?id=dongtai' class='posiFix'>
-          <image src='cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/add_index.png' class='addIcon'> </image>
-        </navigator>
+
+      
+
       </swiper-item>
       <swiper-item style="display:block;">
         <view class="baochi_fixed">
           <view class="navbar">
             <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
           </view>
-
-        
-
-
           <view class="page-section page-section-spacing swiper">
             <image class="image_biankuang" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/边框.png"></image>
             <swiper style="height:240px;margin-top:-280px" indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}" vertical="{{false}}" interval="2000" duration="500" previous-margin="0px" next-margin="0}}px">
@@ -167,11 +164,11 @@
 
                     <view class="nickName">{{item.poster}}</view>
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="margin-left:-80px;margin-top:-35px;width:40px;height:40px">
-                      <image class="weui-media-box__thumb" style="border-radius:15%;margin-left:-325px" src="{{item.src_of_avatar}}" />
+                      <image catchtap="Click_touxiang" data-userOpenid="{{item._openid}}" class="weui-media-box__thumb" style="border-radius:15%;margin-left:-325px" src="{{item.src_of_avatar}}" />
                     </view>
                     <image class="yundong_icon_post" src="{{ne[i].leibie=='跑步'? 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/跑步.png':ne[i].leibie=='篮球'?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/篮球.png':ne[i].leibie=='羽毛球'?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/羽毛球.png':ne[i].leibie=='足球'?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/足球.png':ne[i].leibie=='棒球'?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/棒球.png':'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/乒乓球.png'}}"></image>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="margin-top:32px;margin-left:-308px">
-                      <view class="weui-media-box__desc" style="margin-left:-160px;font-weight:555;font-family:宋体"><text>{{item.text}}</text></view>
+                      <view class="weui-media-box__desc" style="margin-left:10px;font-weight:555;font-family:宋体"><text style="word-break: break-word">{{item.text}}</text></view>
                     </view>
                   </navigator>
 
@@ -186,16 +183,14 @@
                     <view class="weui-media-box__info__meta">{{item.post_time}}</view>
                   </view>
                   <view class="footer">
-                    <view class="yuedushu">阅读数{{number_of_visit_list[i]}}</view>
+                    <view class="yuedushu">阅读数{{item.number_of_visit}}</view>
                     <image class="image_of_dianzan" src="{{dianzan_src_list[i]}}" bindtap="Dianzan" data-index="{{i}}"></image>
                     <view class="dianzanshu">{{item.dianzan_list.length}}</view>
                     <image class="image_of_pinglun" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论.png" bindtap="Showpinglun" data-index="{{i}}"></image>
-                    <image class="image_of_post_shanchu {{ne[i]._openid==openid?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除(2).png" bindtap="Post_of_shanchu" data-i="{{i}}"></image>
+                    <image class="image_of_post_shanchu {{ne[i]._openid==openid?'show':'hide'}}" src="../../../images/logo/delete.png" bindtap="Post_of_shanchu" data-i="{{i}}"></image>
                     <view class="pinglunshu">{{ne[i].comments.length}}</view>
 
-                    <view class="image_of_sanjiao_view">
-                      <image class="image_of_sanjiao" src="{{showview[i]?'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论三角.png':''}}"></image>
-                    </view>
+                
                     <view class="comments {{showview[i]?'show':'hide'}}" wx:for="{{ne[i].comments}}" wx:for-index="j">
                       <view class="comments_of_avatar">
                         <image class="weui-media-box__thumb" style="border-radius:100%" src="{{item[1]}}" />
@@ -203,7 +198,7 @@
                       <view class="nickName_of_comment">{{item[0]}}</view>
                       <view class="comments_of_time">{{item[3]}}</view>
                       <view class="comments_of_text">{{item[2]}}</view>
-                      <view class="image_of_shanchu_view ne[i]._openid==openid?'show':item[4]==openid?'show':'hide'">
+                      <view class="image_of_shanchu_view {{item[4]==openid?'show':'hide'}}">
                         <image class="image_of_shanchu" bindtap="Comments_shanchu" data-i="{{i}}" data-j="{{j}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除.png"></image>
                       </view>
                       <view class="divLine_of_comments"></view>
@@ -227,12 +222,12 @@
             </view>
           </view>
         </view>
-        <navigator url='../publish/publish?id=jingyan' class='posiFix'>
-          <image src='cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/add_index.png' class='addIcon'> </image>
-        </navigator>
       </swiper-item>
-
     </swiper>
   </view>
+
+    <navigator url='../publish/publish?id={{leibie[currentTab]}}' class='posiFix'>
+          <image src='cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/add_index.png' class='addIcon'> </image>
+        </navigator>
 
 </view>

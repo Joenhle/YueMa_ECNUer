@@ -1,83 +1,94 @@
 <!--pages/mine/basic_information/basic_information.wxml-->
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-  <view slot="backText">返回</view>
-  <view slot="content">我的</view>
-</cu-custom>
-  <view class="my">
-
-    <view class="my-item flex-wrp" >
-      <view class="myitem-icon flex-item">
-      <image src="../../../images/mine/ID.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>昵称</text>
-      </view>
-      <view class="myitem-nameHL flex-item">
-       <text> {{id}}</text>
+<!--自定义页面-->
+ <cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+    <view slot='backText'>返回</view>
+    <view slot="content">基本信息</view>
+  </cu-custom>
+<!--基本个人信息-->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <!--1.签到-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-vip text-pink"></text>
+        <text class="text-grey" decode="{{true}}" >姓名:&emsp;{{realName}}</text>
       </view>
     </view>
-
-    <view class="my-item flex-wrp">
-     <view class="myitem-icon flex-item">
-      <image src="../../../images/mine/gender.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>性别</text>
-      </view>
-       <view class="myitem-nameHL flex-item">
-      {{gender}}
+    <!--2.性别-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-profile text-orange"></text>
+        <text class="text-grey" decode="{{true}}" >性别:&emsp;{{gender_show}}</text>
       </view>
     </view>
-
-     <view class="my-item flex-wrp" >
-      <view class="myitem-icon flex-item">
-         <image src="../../../images/mine/university.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>所在大学</text>
-      </view>
-       <view class="myitem-nameHL flex-item">
-      {{university}}
+    <!--2.学号-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-form text-blue"></text>
+        <text class="text-grey" decode="{{true}}">学号:&emsp;{{xuehao}}</text>
       </view>
     </view>
-
-    <view class="my-item flex-wrp">
-    <view class="myitem-icon flex-item">
-         <image src="../../../images/mine/age.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>年龄</text>
-      </view>
-       <view class="myitem-nameHL flex-item">
-      {{age}}
+    <!--3.年级-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-emoji text-yellow"></text>
+        <text class="text-grey" decode="{{true}}">年级:&emsp;{{grade}}</text>
       </view>
     </view>
-
-    <view class="my-item flex-wrp">
-    <view class="myitem-icon flex-item">
-         <image src="../../../images/mine/constellation.png"></image>
-      </view>
-      <view class="myitem-name flex-item">
-        <text>星座</text>
-      </view>
-       <view class="myitem-nameHL flex-item">
-      {{constellation}}
+     <!--4.宿舍-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-locationfill text-red"></text>
+        <text class="text-grey"  decode="{{true}}">宿舍:&emsp;{{sushe}}</text>
       </view>
     </view>
-
-    <view class="my-item flex-wrp">
-    <view class="myitem-icon flex-item">
-         <image src="../../../images/mine/love.png"></image>
-      </view>
-      <view class="myitem-nameHL flex-item">
-        <text>爱好</text>
-      </view>
-      <view class="myitem-nameHL flex-item">
-      {{love}}
+        <!--5.学院-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-group_fill text-orange"></text>
+        <text class="text-grey" decode="{{true}}">学院:&emsp;{{college}}</text>
       </view>
     </view>
+     <!--6.专业-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-newsfill text-brown"></text>
+        <text class="text-grey" decode="{{true}}">专业:&emsp;{{major}}</text>
+      </view>
+    </view>
+    <!--7.爱好-->
+       <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-like text-red"></text>
+        <text class="text-grey" decode="{{true}}">爱好:&emsp;{{love}}</text>
+      </view>
+    </view>
+    <!--8.陪跑次数-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-footprint text-green"></text>
+        <text class="text-grey" decode="{{true}}">陪跑次数:&emsp;{{yuepao}}</text>
+      </view>
+    </view>
+   <!--9.约球次数-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-global text-pink"></text>
+        <text class="text-grey" decode="{{true}}">约球次数:&emsp;{{yueqiu}}</text>
+      </view>
+      </view>
+    <!--10.点赞数-->
+    <view class="cu-item">
+      <view class="content">
+        <text class="cuIcon-appreciate text-pink"></text>
+        <text class="text-grey"  decode="{{true}}">点赞数:&emsp;&emsp;{{dianzan_ren.length}}&emsp;&emsp;&emsp;&emsp;&emsp;</text>
+        <button catchtap="Dianzan"  wx:if='{{link_flag==1&&his_dianzan==false}}' class="cu-btn round bg-pink">给他点个赞吧</button>
+         <view  wx:if='{{link_flag==1&&his_dianzan==true}}' class="cu-btn round bg-grey">您已经点赞了哈</view>
+      </view>
+    </view>
+</view>
+  <!--编辑个人信息-->
+<view wx:if="{{link_flag==0}}"class="padding-sm">
+  <button class="cu-btn round block line-orange lg" bindtap="add_inforamtion">
+    <text class="cuIcon-edit"></text> 编辑个人信息</button>
+</view>
 
-   <view class='information'>
-    <button type="primary" size="default" bindtap="add_inforamtion"> 编辑个人信息 </button>
-   </view>
-  </view>

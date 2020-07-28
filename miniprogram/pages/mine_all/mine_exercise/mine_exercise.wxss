@@ -1,14 +1,14 @@
 /* pages/mine_exercise/mine_exercise.wxss */
 /*1.栏目*/
 .section_out{
-  background: rgba(23, 9, 102, 0.822);
+  background: rgba(239, 243, 244, 0.822);
   width: 100%;
   padding:3% 1% 2% 1%;
 }
 .section_in{
   padding: 5rpx 0 10rpx 0;
   border-radius: 4px;
-  background: rgba(243, 215, 3, 0.967);
+  background: rgba(102, 204, 128, 0.686);
   width:98%;
   font-size: 30rpx;
   color: #f547bb;
@@ -26,13 +26,13 @@
 }
 /*具体数据*/
 .specificData{
-  background:  rgba(23, 9, 102, 0.822);
+  background:  rgba(241, 245, 247, 0);
   display: flex;
   flex-direction: column;
 }
 .whiteborder{
   height: 5rpx;
-  background:rgba(39, 65, 150, 0);
+  background:rgba(28, 160, 249, 0.803);
   width: 100%;
 }
 .oneData{
@@ -45,7 +45,7 @@
   display: flex;
   font-size: 28rpx;
   font-weight: bold;
-  color: #f547bb;
+  color: #fa8b7e;
   flex-direction:column;
 }
 .oneDataExcat{
@@ -66,7 +66,7 @@
   margin-right: 8%;
   font-size: 40rpx;
   font-weight: bold;
-  color: #f547bb;
+  color: #39cec7;
 }
 .startEndIcon{
   margin-top: 13rpx;
@@ -80,7 +80,7 @@
   margin-top: 30rpx;
   font-size: 23rpx;
   font-weight: bold;
-  color: #f547bb;
+  color: #0d24d070;
 }
 .fastIcon{
   margin-top: 10rpx;

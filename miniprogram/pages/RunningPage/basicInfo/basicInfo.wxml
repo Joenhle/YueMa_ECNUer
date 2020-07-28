@@ -6,13 +6,13 @@
 <view class="weui-cells weui-cells_after-title  margin-top ">
   <view class="weui-cell">
     <view class="weui-cell__hd">
-      <image src="https://wx.qlogo.cn/mmopen/vi_32/I5eEfZSY2m8TQJP4nQn1GHkGYcHw3AjEJiaCPo45uS9zUpCNL6NykQkdXC6p1AykYDPcr7TBDJvBApQdF1yaxbw/132" style="margin-right: 15px;vertical-align: middle;width:75px; height:75px;"></image>
+      <image src="{{poster_info.avatarUrl}}" style="margin-right: 15px;vertical-align: middle;width:75px; height:75px;"></image>
     </view>
     <view class="weui-cell__bd">
-      <view style='font-size:25px'>潇</view>
-      <view style='font-size:13px;color:#888888'>性别：男</view>
-      <view style='font-size:13px;color:#888888'>年级：18级</view>
-      <view style='font-size:13px;color:#888888'>软件工程学院</view>
+      <view style='font-size:25px'>{{poster_info.nickName}}</view>
+      <view style='font-size:13px;color:#888888'>性别：{{gender[poster_info.gender]}}</view>
+      <view style='font-size:13px;color:#888888'>年级：{{poster_info.grade}}</view>
+      <view style='font-size:13px;color:#888888'>{{poster_info.college}}</view>
     </view>
   </view>
 </view>
@@ -21,19 +21,19 @@
   <view class="cu-item ">
     <view class="content">
       <text class="cuIcon-appreciatefill text-pink"></text>
-      <text class="text-black">队友点赞：5次</text>
+      <text class="text-black">队友点赞：{{dianzan}}次</text>
     </view>
   </view>
   <view class="cu-item ">
     <view class="content">
       <image src="/images/RunningPage/run(little_red).png" class="png" mode="aspectFit"></image>
-      <text class="text-black">成功约跑：6次</text>
+      <text class="text-black">成功约跑：{{poster_info.yuepao}}次</text>
     </view>
   </view>
   <view class="cu-item ">
     <view class="content">
       <image src="/images/RunningPage/ball(little_yellow).png" class="png" mode="aspectFit"></image>
-      <text class="text-black">成功约球：10次</text>
+      <text class="text-black">成功约球：{{poster_info.yueqiu}}次</text>
     </view>
   </view>
   <view class="cu-item ">
@@ -42,13 +42,10 @@
       <text class="text-black">已加入成员</text>
     </view>
     <view class="action">
-      <view class="cu-avatar-group">
-        <view class="cu-avatar round sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10004.jpg);"></view>
-        <view class="cu-avatar round sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10003.jpg);"></view>
-        <view class="cu-avatar round sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10002.jpg);"></view>
-        <view class="cu-avatar round sm" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class="cu-avatar-group" >
+        <view class="cu-avatar round sm" wx:for="{{members}}" wx:for-index="i" style="background-image:url({{members[i].avatarUrl}});"></view>
       </view>
-      <text class="text-grey text-sm">4 人</text>
+      <text class="text-grey text-sm">{{members.length}}人</text>
     </view>
   </view>
 </view>
@@ -56,6 +53,6 @@
 
 <view class="box" style="position: fixed; bottom: 100px; width: 100%;">
   <view class="cu-bar btn-group">
-    <button class="cu-btn bg-green shadow-blur round lg">进入聊天室</button>
+    <button class="cu-btn bg-green shadow-blur round lg" bindtap="Dianzan">给Ta点个赞叭</button>
   </view>
 </view>

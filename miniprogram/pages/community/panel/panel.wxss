@@ -2,7 +2,7 @@
 @import '../../../style/weui.wxss';
 
 page{
-  background: 	#FFC0CB;
+
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -181,7 +181,7 @@ page{
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: -12%;
+  bottom:1%;
 }
 
 .addIcon {
@@ -207,7 +207,7 @@ page{
   float: left;
 }
 .comments_of_time{
-  margin-left: 220px;
+  margin-left: 70%;
   margin-top: -30px;
   font-size: 11px;
   width:400px;
@@ -264,8 +264,7 @@ page{
   float: left;
 }
 
-.footer {
-}
+
 
 /*分割线样式*/
 .divLine {
@@ -285,7 +284,7 @@ page{
     height:auto;
     background-color: rgba(240, 240, 240, 0.6);
     margin-left: 40px;
-    width: 310px;
+    width: 85%;
 }
 .comments_of_avatar{
   width: 30px;
@@ -293,6 +292,7 @@ page{
   margin-left: 5px;
 }
 .comments_of_text{
+  word-break:break-word;
   font-size: 13px;
   width: 250px;
   margin-left: 35px;
@@ -302,7 +302,7 @@ page{
 .image_of_sanjiao{
   height: 15px;
   width: 15px;
-  margin-left: -252px;
+  margin-left: -287px;
   margin-bottom: -10px;
 }
 .image_of_sanjiao_view{
@@ -319,17 +319,18 @@ page{
     padding: 2px;
     font-size: 0.8em;
     color: #444;
-    width: 200px;
+    width: 70%;
     border-radius: 5%;
     margin-left: 40px;
 }
 .image_of_fabu_view{
- margin-left: 255px;
+ 
  margin-top: -24px;
 }
 .image_of_fabu{
  width: 20px;
  height: 20px;
+ margin-left:82% ;
 }
 .pinglunshu{
   float: left;
@@ -339,14 +340,15 @@ page{
   color: rgba(25, 25, 112, 0.6);
 }
 .image_of_shanchu_view{
-
+  margin-left: 92%;
+  margin-bottom: 20px;
+  margin-top:-20px;
 }
 .image_of_shanchu{
   height: 20px;
   width: 20px;
-  margin-left: 260px;
-  margin-top: -20px;
   float: left;
+  margin-top: -2px;
 }
 .image_of_post_shanchu{
    width: 20px;
@@ -393,35 +395,35 @@ page{
 .icon_paobu{
   height: 50px;
   width: 50px;
-  margin-left: 35px;
+  margin-left: 15%;
   margin-top: 5px;
 }
 .icon_lanqiu{
   height: 50px;
   width: 50px;
-  margin-left: 70px;
+  margin-left: 15%;
   margin-top: 5px;
 }
 .icon_yumaoqiu{
   height: 45px;
   width: 45px;
-  margin-left: 60px;
+  margin-left: 15%;
   margin-bottom: 5px;
 }
 .icon_zuqiu{
   height: 50px;
   width: 50px;
-  margin-left: 35px;
+  margin-left: 15%;
 }
 .icon_bangqiu{
   height: 50px;
   width: 50px;
-  margin-left: 65px;
+  margin-left: 15%;
 }
 .icon_pingpang{
   height: 50px;
   width: 50px;
-  margin-left: 65px;
+  margin-left: 15%;
 }
 .swiper-item{
   width: 100%;
@@ -429,15 +431,15 @@ page{
 .yundong_icon_post{
   height: 40px;
   width: 40px;
-  margin-left: 250px;
-  margin-top: -40px;
+  margin-left: 80px;
+  margin-top: -34px;
   float: left;
 }
 .chakan_quanbu{
   font-size: 15px;
   color: rgba(25, 25, 112, 0.6);
   font-weight: 700;
-  margin-left: 250px;
+  margin-left: 81%;
   margin-top: -25px;
 }
 .baochi_fixed{

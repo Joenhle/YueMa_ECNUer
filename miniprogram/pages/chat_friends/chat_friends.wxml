@@ -17,7 +17,7 @@
     <view wx:if="{{pinyin[index].length!=0}}" class="cu-list menu-avatar no-padding">
       <view wx:if="{{pinyin[index].length!=0}}" class="cu-item" wx:for="{{pinyin[index].length}}" wx:key wx:for-index="sub">
        
-           <image style="border-radius:100%;margin-top:3px;width:50px;height:50px;margin-right:300px;margin-top:-5px" src="{{pinyin[index][sub]['avatarUrl']}}" />
+           <image style="border-radius:100%;margin-top:3px;width:50px;height:50px;margin-right:85%;margin-top:-5px" src="{{pinyin[index][sub]['avatarUrl']}}" />
      
         <view wx:if="{{pinyin[index].length!=0}}" class="content">
           <view wx:if="{{pinyin[index].length!=0}}" class="text-grey">{{pinyin[index][sub]['nick_name']}}

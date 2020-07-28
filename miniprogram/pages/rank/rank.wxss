@@ -1,0 +1,176 @@
+/* miniprogram/pages/rank/rank.wxss */
+.lingjiangtai{
+
+}
+.image_of_lingjiangtai{
+  width: 100%;
+  height: 328px;
+}
+.image_of_yinuoqianjin{
+  height: 55px;
+  width: 136px;
+  margin-left: 17px;
+  float: left;
+  margin-top: -329px;  
+}
+.image_of_yundongdaren{
+  height: 50px;
+  width: 136px;
+  margin-left: 204px;
+  float: left;
+  margin-top: -325px;
+  
+}
+.num_one_avatarUrl{
+  border-radius: 100%;
+  height: 83px;
+  width: 23%;
+  margin-left: 38%;
+  float: left;
+  margin-top: -268px;
+  
+  
+}
+.num_two_avatarUrl{
+  border-radius: 100%;
+  height: 60px;
+  width: 17%;
+  float: left;
+  margin-left: 10%;
+  margin-top: -211px;
+  
+  
+  
+  
+  
+}
+.num_three_avatarUrl{
+  border-radius: 100%;
+  height: 54px;
+  width: 15%;
+  margin-left: 74%;
+  float: left;
+  margin-top: -194px;
+  
+  
+}
+.num_one_name{
+  float: left;
+  margin-left: 41%;
+  margin-top: -155px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+}
+.num_two_name{
+  float: left;
+  margin-left: 48px;
+  margin-top: -126px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+  
+}
+.num_three_name{
+  float: left;
+  margin-left: 72%;
+  margin-top: -129px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+  
+}
+.num_one_score{
+  float: left;
+  margin-left: 44%;
+  margin-top: -136px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+}
+.num_two_score{
+  float: left;
+  margin-left: 13%;
+  margin-top: -106px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+  
+}
+.num_three_score{
+  float: left;
+  margin-left: 76%;
+  margin-top: -109px;
+  z-index: 100;
+  position: relative;
+  font-size: 13px;
+  color: white;
+}
+.paihangbang_list{
+  width: 100%;
+  background-color: #fff;
+  margin-top: -6px;
+  height: auto;
+}
+.paihangbang{
+  width: 100%;
+  height: 60px;
+}
+
+.paihangbang_ranking{
+  float: left;
+  margin-left: 15px;
+  margin-top: 18px;
+  z-index: 100;
+  position: relative;
+  font-size: 15px;
+  width: 40px;
+}
+
+.paihangbang_avatarUrl{
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  margin-left: -8px;
+  float: left;
+  margin-top: 8px;
+}
+
+.paihangbang_name{
+  float: left;
+  margin-left: 33px;
+  margin-top: -23px;
+  width: 200px;
+  z-index: 100;
+  position: relative;
+  font-size: 15px;
+}
+
+.paihangbang_score{
+  float: left;
+  margin-left: 216px;
+  margin-top: -22px;  
+  z-index: 100;
+  position: relative;
+  font-size: 15px;
+  color: purple;
+}
+.star{
+  height: 20px;
+  width: 20px;
+  float: left;
+  margin-left: 194px;
+  margin-top: 20px;
+}
+/*分割线样式*/
+.divLine {
+  background:#E0E3DA;
+  width: 90%;
+  height: 1px;
+  margin-left: 5%;
+}

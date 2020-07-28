@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "openapi": [
+      "subscribeMessage.send"
+    ]
+  },
+  "triggers": [
+    {
+      "name": "timeingTaskExecutor",
+      "type": "timer",
+      "config": "* */10 * * * * *"
+    }
+  ]
+}

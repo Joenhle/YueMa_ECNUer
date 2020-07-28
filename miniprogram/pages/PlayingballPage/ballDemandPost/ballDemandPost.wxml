@@ -1,0 +1,53 @@
+<!--miniprogram/pages/PlayingballPage/ballDemandPost/ballDemandPost.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">需求帖子</view>
+</cu-custom>
+
+<view class="cu-form-group">
+	<view class="title">性别要求</view>
+	<view class="title">{{gender[gender_require]}}</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">技术要求</view>
+	<view class="title">{{speed[demandPost.skill_require]}}</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">已有人数</view>
+	<view class="title">{{demandPost.num_of_people}}人</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">总共人数</view>
+	<view class="title">{{demandPost.max_num}}人</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">球类</view>
+	<view class="title">{{ball[demandPost.ball]}}</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">地点</view>
+	<view class="title">操场</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">时长</view>
+	<view class="title">{{demandPost.duration}}分钟</view>
+</view>
+<view class="cu-form-group">
+	<view class="title">时间</view>
+	<view class="title">{{demandPost.run_time}}</view>
+</view>
+<view class="cu-form-group align-start">
+	<view class="title">备注</view>
+	<text maxlength="-1" class="mytext" >{{demandPost.remark}}</text>
+</view>
+<view class="box" style="position: fixed; bottom: 40px; width: 100%;">
+	<view class="cu-bar btn-group">
+		<button wx:if="{{is_partof}}" class="cu-btn bg-green shadow-blur round" bindtap="Quit_team">退出</button>
+		<button wx:else class="cu-btn bg-green shadow-blur round" disabled type="" >退出</button>
+		<button wx:if="{{is_partof}}" class="cu-btn bg-blue shadow-blur round" bindtap="Liaotianshi">进入聊天室
+		<view wx:if="{{unread_news!=null && unread_news!=0}}" class="cu-tag badge">{{unread_news}}</view>
+		</button>
+		<button wx:elif="{{not_gender}}" class="cu-btn bg-blue shadow-blur round">性别不合</button>
+		<button wx:else class="cu-btn bg-blue shadow-blur round" disabled="{{isjoining}}" type="" bindtap="Jion_running">加入</button>
+	</view>
+</view>

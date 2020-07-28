@@ -10,12 +10,22 @@ Page({
     bind_comments_text:'',
     leibie: ['Posts', 'experience'],
     leibie_paixu: ['post_time', 'number_of_visit'],
-    input_empty:''
+    input_empty:'',
+    app_globalData_currentTab:app.globalData.currentTab
+  },
+  onUnload:function(){
+    
   },
   onLoad: function (options) {
     var that = this;
     const db = wx.cloud.database()
+    
     var post_id = options.post_id;
+    var options_leibie = options.leibie 
+    if(options_leibie!=null){
+      app.globalData.currentTab=options.leibie
+    }
+
     var image_dianzan_src = options.image_dianzan_src;
     var number_of_visit;
     wx.getStorage({
@@ -34,12 +44,25 @@ Page({
         })
       },
     })
+    
+
     db.collection(that.data.leibie[app.globalData.currentTab]).doc(post_id).get({
       success: function (res) {
+        if(image_dianzan_src==null){
+          image_dianzan_src='../../../images/logo/dianzan.png';
+          for(let i =0;i<res.data.dianzan_list.length;++i){
+            if(res.data.dianzan_list[i]==that.data.openid){
+              image_dianzan_src='../../../images/logo/dianzan(2).png'
+              break;
+            }
+          }
+        }
+
         that.setData({
           image_dianzan_src: image_dianzan_src,
           ne: res.data
         })
+        app.is_article_change = that.data.ne._id
         number_of_visit = parseInt(that.data.ne.number_of_visit) + 1;
 
 
@@ -57,41 +80,16 @@ Page({
                 that.setData({
                   ne: res.data
                 })
+
+                
+                if(that.data.ne.leibie!=null){
+                  app.globalData.currentTab=1
+                }
+
               }
             })
           }
         })
-
-
-
-
-
-
-        /*db.collection(that.data.leibie[app.globalData.currentTab]).doc(post_id).update({
-          data: {
-            number_of_visit: number_of_visit
-          },
-          success: function (res) {
-            db.collection(that.data.leibie[app.globalData.currentTab]).doc(post_id).get({
-              success: function (res) {
-                that.setData({
-                  ne: res.data
-                })
-              }
-            })
-          }
-        })*/
-
-
-
-
-
-
-
-
-
-
-
 
       }
     })
@@ -104,13 +102,29 @@ Page({
   },
   Dianzan: function (e) {
     var that = this;
+    //先判断有没有登录
+    if (app.globalData.is_denglu == false) {
+      wx.showModal({
+        title: '提示',
+        content: '请先完成登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../../mine_all/mine/mine',
+            })
+          }
+        }
+      })
+      return
+    }
+
     const db = wx.cloud.database();
-    if (that.data.image_dianzan_src == 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/点赞.png') {
+    if (that.data.image_dianzan_src == '../../../images/logo/dianzan.png') {
       var temp = that.data.ne;
       temp.dianzan_list[temp.dianzan_list.length] = that.data.openid;
       that.setData({
         ne: temp,
-        image_dianzan_src: 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/点赞(2).png'
+        image_dianzan_src: '../../../images/logo/dianzan(2).png'
       })
 
 
@@ -131,7 +145,7 @@ Page({
           temp.dianzan_list.splice(i, 1);
           that.setData({
             ne: temp,
-            image_dianzan_src: 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/点赞.png',
+            image_dianzan_src: '../../../images/logo/dianzan.png',
           })
 
 
@@ -154,6 +168,8 @@ Page({
         }
       }
     }
+
+    
   },
   Post_of_shanchu: function (e) {
     var that = this;
@@ -165,6 +181,9 @@ Page({
         if (res.confirm) {
           db.collection(that.data.leibie[app.globalData.currentTab]).doc(that.data.ne._id).remove({
             success: function (res) {
+
+             
+
               wx.showToast({
                 title: '删除帖子成功',
                 icon: 'success',
@@ -181,6 +200,22 @@ Page({
     })
   },
   Showpinglun:function(e){
+    //先判断有没有登录
+    if (app.globalData.is_denglu == false) {
+      wx.showModal({
+        title: '提示',
+        content: '请先完成登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../../mine_all/mine/mine',
+            })
+          }
+        }
+      })
+      return
+    }
+
     var that = this;
     const db = wx.cloud.database();
     that.setData({
@@ -188,7 +223,9 @@ Page({
     })
   },
   Comments_shanchu:function(e){
+    
     var that = this;
+
     const db = wx.cloud.database();
     var i = e.target.dataset.i;
     console.log(i);
@@ -207,6 +244,9 @@ Page({
         comments_list: temp.comments
       },
       success: function (res) {
+
+       
+
         wx.showToast({
           title: '删除评论成功',
           icon: 'success',
@@ -235,6 +275,22 @@ Page({
     })
   },
   Comments_fabu:function(e){
+    //先判断有没有登录
+    if (app.globalData.is_denglu == false) {
+      wx.showModal({
+        title: '提示',
+        content: '请先完成登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../../mine_all/mine/mine',
+            })
+          }
+        }
+      })
+      return
+    }
+    
     var that = this;
     that.setData({
       input_empty:''
@@ -269,6 +325,9 @@ Page({
           comments_list: temp.comments
         },
         success: function (res) {
+
+          
+
           //更新前端的ne[]
           that.setData({
             ne: temp,

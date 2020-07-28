@@ -1,12 +1,25 @@
 //app.js
 App({
   onLaunch: function () {
-    this.globalData = {
+
+    try {
+      wx.clearStorageSync()
+    } catch(e) {
+      // Do something when catch error
+    }
+
+    this.globalData = { 
       currentTab: 0,
       leibie_of_onshow: '全部',
       leibie_from_onshow: false,
       userInfo: null,
-      evn: "xiaohuang-evwg7"
+      evn: "xiaohuang-evwg7",
+      is_article_change:'',
+      is_panel_from_publish:false,
+      yueqiu_or_yuepao:'约球',
+      is_denglu:false,
+      openid:'',
+      userinfo:'',
     }
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')

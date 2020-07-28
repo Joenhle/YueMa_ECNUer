@@ -1,0 +1,26 @@
+/* miniprogram/pages/PlayingballPage/MainBall/MainBall.wxss */
+
+.head_img {
+  margin-right: 15px;
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.load_icon {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  bottom: 30px;
+  right: 40%;
+  z-index: 100;
+}
+.refresh_icon {
+  position: fixed;
+  width: 90rpx;
+  height: 90rpx;
+  bottom: 500rpx;
+  right: 7%;
+  z-index: 100;
+}

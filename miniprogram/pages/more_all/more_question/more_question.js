@@ -7,39 +7,39 @@ Page({
   data: {
     //轮播图
     bnrUrl: [{
-      url: 'cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15818475330000.jpg'
+      url: 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15818473700000.jfif'
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15818475330001.jpg"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15818473700001.jfif"
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15818475330002.jfif"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15818473700002.jfif"
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15818475330003.jpg"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15818473700003.jfif"
     }],
    //6个图片选项
   routers: [
     {
       name: '绩点升学',
-      url: '../../images/more/question_1.png',
+      url: '../../../images/more/question_1.png',
     },
     {
       name: '求职就业',
-      url: '../../images/more/question_2.png',
+      url: '../../../images/more/question_2.png',
     },
     {
       name: '考研大军',
-      url: '../../images/more/question_3.png',
+      url: '../../../images/more/question_3.png',
     },
     {
       name: '出国升学',
-      url: '../../images/more/question_4.png',
+      url: '../../../images/more/question_4.png',
     },
     {
       name: '修理物件',
-      url: '../../images/more/question_5.png',
+      url: '../../../images/more/question_5.png',
     },
     {
       name: '其他',
-      url: '../../images/more/buytogether_6.png',
+      url: '../../../images/more/buytogether_6.png',
     }
   ],
   userInfo:'',//用户的基本信息
@@ -63,6 +63,10 @@ Page({
   page:0,//数据分页
   reachBottom:false,//是否到达底部
   previewImage: false,//如果是预览图片返回则不用刷新页面
+  detail:false,//是否打开详情页面
+  look_avatar:false,//是否看头像信息
+  Is_delete_index:0,//删除的下标
+  once:true,//第一次进入不刷新
   },
   //选择显示的分类页面（奶茶，外卖等）
   choosewhat: function (e) {
@@ -100,7 +104,7 @@ Page({
     console.log('查询结束')
   },
   //生命周期函数--监听页面加载
-  onLoad: function (options) {
+  onLoad: function () {
     that = this
     wx.cloud.init({
       env: app.globalData.evn
@@ -432,7 +436,7 @@ Page({
     })
   },
   //发布的评论文本内容显示
-   pinglunInput: function (event) {
+  pinglunInput: function (event) {
     this.setData({
       pinglunInput: event.detail.value
     })
@@ -453,8 +457,7 @@ Page({
     })
     this.getData();
   },
-  //页面相关事件处理函数--监听用户下拉动作
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function () { //页面相关事件处理函数--监听用户下拉动作
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.setData({
       page:0
@@ -465,25 +468,49 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1500);
   },
-  //生命周期函数--监听页面显示
-  onShow: function () {
-    if (this.data.previewImage == true) {//图片预览则不刷新
+  onShow: function () {//生命周期函数--监听页面显示
+    console.log('onshow')
+    if(app.globalData.Is_delete==true){
+      app.globalData.Is_delete=false
+      console.log(this.data.Is_delete_index)
+        this.data.question.splice(this.data.Is_delete_index,1)
+        this.setData({
+          question:this.data.question
+        })
+    }
+    if(this.data.previewImage==true){//图片预览则不刷新
       this.setData({
-        previewImage: false
+        previewImage:false
       })
     }
-    else {//否则刷新
+    else if(this.data.detail==true){//看详细页面不刷新
       this.setData({
-        click_publish: true,
-        click_search: false,
-        search_what: '',
-        page: 0,
-        usedobject: []
+        detail:false
       })
-      this.getData();
     }
+    else if(this.data.look_avatar==true){//看头像不刷新
+      this.setData({
+        look_avatar:false
+      })
+    }
+    else if(this.data.once==true){//第一次进入不刷新
+      this.setData({
+        once:false
+      })
+    }
+    else{//否则刷 新
+      console.log('shuaxin')
+      this.setData({
+      click_publish: true,
+      click_search: false,
+      search_what: '',
+      page:0,
+      question:[]
+    })
+    this.getData();
+   }
   },
-   publish:function(e){
+   publish:function(e){//发布评论
    console.log(e.currentTarget.dataset.topicid)
     //判断输入是否为空，如果为空。则不能发布
     if(this.data.pinglunInput==''){
@@ -524,5 +551,36 @@ Page({
        }
      })
     }
-   },
+  },
+   more_deatiled:function(e){//跳转到详情页面
+    this.setData({
+      Is_delete_index:e.currentTarget.dataset.index
+    })
+    console.log(this.data.Is_delete_index)
+    var _id=e.currentTarget.dataset.item._id
+    var _openid=e.currentTarget.dataset.item._openid
+    var  images=[]
+    images =e.currentTarget.dataset.item.images
+    var  leibie=e.currentTarget.dataset.item.leibie
+    var  post_time=e.currentTarget.dataset.item.post_time
+    var poster=e.currentTarget.dataset.item.poster
+    var src_of_avatar=e.currentTarget.dataset.item.src_of_avatar
+    var text=e.currentTarget.dataset.item.text
+    var tiezi='疑惑解答' 
+    this.setData({
+      detail:true
+    })
+   wx.navigateTo({
+     url: '../more_detailed/more_detailed?_id='+_id+'&_openid='+_openid+'&poster='+poster+'&post_time='+post_time+'&src_of_avatar='+src_of_avatar+'&leibie='+leibie+'&text='+encodeURIComponent(JSON.stringify(text))+'&images='+JSON.stringify(images)+'&tiezi='+tiezi+'&comments='+encodeURIComponent (JSON.stringify(e.currentTarget.dataset.item.comments))+'&dianzan_list='+encodeURIComponent(JSON.stringify(e.currentTarget.dataset.item.dianzan_list))
+   })
+  },
+   his_information:function(e){ //看个人信息
+    this.setData({
+     look_avatar:true
+     })
+    var link_openid=e.currentTarget.dataset.item._openid
+    wx.navigateTo({
+      url:'../../mine_all/mine_basic_information/mine_basic_information?link_openid='+link_openid
+    })
+  }
 })

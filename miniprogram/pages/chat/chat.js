@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
 
   data: {
@@ -16,6 +17,12 @@ Page({
 
     //6 判断是否点击了发送按钮
     is_send_click:false,
+
+    //7 判断当前聊天室是约球还是约跑
+    leibie:'',
+
+
+
 
     input_empty: '',
     input_value: '',
@@ -116,13 +123,13 @@ Page({
       wx.cloud.callFunction({
         name: 'db_chat_update',
         data: {
-          dbname: 'DemandPosts',
+          dbname: that.data.leibie,
           _id: that.data._id,
           chat: chat
         },
         success: function(res) {
           //成功上传至数据库后再立马获取chat
-          db.collection('DemandPosts').doc(that.data._id).get({
+          db.collection(that.data.leibie).doc(that.data._id).get({
             success: function(res) {
               that.setData({
                 chat:res.data.chat
@@ -192,13 +199,13 @@ Page({
                 wx.cloud.callFunction({
                   name: 'db_chat_update',
                   data: {
-                    dbname: 'DemandPosts',
+                    dbname: that.data.leibie,
                     _id: that.data._id,
                     chat: chat
                   },
                   success: function (res) {
                     //成功上传至数据库后再立马获取chat
-                    db.collection('DemandPosts').doc(that.data._id).get({
+                    db.collection(that.data.leibie).doc(that.data._id).get({
                       success: function (res) {
                         that.setData({
                           chat: res.data.chat
@@ -241,7 +248,7 @@ Page({
     var that =this;
     const db = wx.cloud.database()
     var members = [];
-    db.collection('DemandPosts').doc(that.data._id).get({
+    db.collection(that.data.leibie).doc(that.data._id).get({
       success: function (res) {
         members = res.data.members
         for(var i=0;i<members.length;++i){
@@ -255,7 +262,7 @@ Page({
         wx.cloud.callFunction({
           name: 'db_chat_readnews',
           data: {
-            dbname:'DemandPosts',
+            dbname:that.data.leibie,
             _id: that.data._id,
             members:members
           }
@@ -267,7 +274,14 @@ Page({
 
   onLoad: function(options) {
     var that = this;
+    var leibie = ''
+    if(app.globalData.yueqiu_or_yuepao=="约球"){
+       leibie='BallDemandPosts'
+    }else if(app.globalData.yueqiu_or_yuepao=="约跑"){
+      leibie='DemandPosts'
+    }
     that.setData({
+      leibie:leibie,
       _id:options._id
     })
     console.log(options)
@@ -291,7 +305,7 @@ Page({
 
     //2. 再获取数据库里该聊天室的信息
     const db = wx.cloud.database()
-    db.collection('DemandPosts').where({
+    db.collection(that.data.leibie).where({
       _id: that.data._id
     }).get({
       success: function(res) {
@@ -307,7 +321,7 @@ Page({
     })
 
     //4. 再实时的进行数据库数据监控
-    const watcher = db.collection('DemandPosts').doc(that.data._id)
+    const watcher = db.collection(that.data.leibie).doc(that.data._id)
       .watch({
         onChange: function (snapshot) {
           that.setData({

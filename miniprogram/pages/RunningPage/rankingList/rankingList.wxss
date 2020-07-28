@@ -1,1 +1,124 @@
 /* miniprogram/pages/RunningPage/rankingList/rankingList.wxss */
+/* pages/leftSwiperDel/index.wxss */
+/*1.整体样式*/
+.item-box{
+    width: 100%;        /*宽度为100%*/
+    margin: 0 auto;     /*上下边距自适应*/
+    padding:0rpx 10rpx;/*距离顶部0rpx，距离下边10rpx*/
+}
+/*2.导航栏*/
+.navbar{
+  padding-bottom: 10rpx;
+  display: flex;
+  background: rgb(55, 49, 54);
+  font-size: 40rpx;
+  color: #908df5;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+}
+.navbar .item.active{
+  color: #f545a6;
+}
+.navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rpx;
+  background: #f5347e;
+}
+/*3.栏目*/
+.section_out{
+  background: rgba(23, 9, 102, 0.822);
+  width: 100%;
+  padding:2% 4%;
+}
+.section_in{
+  padding: 20rpx 0 20rpx 0;
+  border-radius: 4px;
+  background: rgba(243, 215, 3, 0.967);
+  width:95%;
+  font-size: 40rpx;
+  color: #f547bb;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center; 
+}
+/*4.一条白线分界*/
+.whiteborder{
+  height: 5rpx;
+  background: rgb(236, 31, 230);
+  width: 100%;
+}
+.item{
+    position: relative;
+    border-bottom: 4rpx solid white;
+    height: 120rpx;
+    line-height: 120rpx;
+    overflow: hidden;
+}
+.inner{
+    position: absolute;
+    top:0;
+}
+.inner.txt{
+    background-color:rgba(23, 9, 102, 0.822)  ;
+    width: 100%;
+    padding:0 10rpx;
+}
+.inner.del{
+    background-color: #e64340;
+    width: 180rpx;text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff
+}
+.item-icon{
+   margin-left: 3%;
+    width: 100rpx;
+    height: 100rpx;
+    vertical-align: middle;
+    margin-right: 20rpx;
+    border-radius:50%;
+}
+.latterprize{
+  margin-left: 5%;
+  font-size: 38rpx;
+  color:white;
+  font-weight: bold;
+}
+.item-id{
+  margin-left: 6%;
+  font-size: 38rpx;
+  color:white;
+}
+.item-data{
+  float: right;
+  color: white;
+  margin-right: 5%;
+  }
+.item-score{
+  position: absolute;
+  left:72%;
+  width: 70rpx;
+  height: 90rpx;
+  margin-top:30rpx;
+  border-radius:50%;
+}
+.item-exercise{
+  position: absolute;
+  left:72%;
+  width: 70rpx;
+  height: 90rpx;
+  margin-top:30rpx;
+  border-radius:50%;
+}

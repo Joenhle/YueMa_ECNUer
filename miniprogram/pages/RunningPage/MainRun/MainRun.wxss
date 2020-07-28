@@ -17,3 +17,11 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.refresh_icon {
+  position: fixed;
+  width: 90rpx;
+  height: 90rpx;
+  bottom: 600rpx;
+  right: 7%;
+  z-index: 100;
+}

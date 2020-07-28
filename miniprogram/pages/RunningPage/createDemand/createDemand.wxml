@@ -11,11 +11,11 @@
   </view>
   <view class="cu-form-group">
     <view class="title">时长</view>
-    <input placeholder="单位为分钟" bindchange="changeDuration"></input>
+    <input placeholder="单位为分钟" value="{{duration}}" bindchange="changeDuration"></input>
   </view>
   <view class="cu-form-group">
     <view class="title">日期</view>
-    <picker mode="date" value="{{date}}" start="{{nowdate}}" end="2020-09-01" bindchange="bindDateChange">
+    <picker mode="date" value="{{date}}" start="{{nowdate}}" end="2050-09-01" bindchange="bindDateChange">
       <view class="picker">
         {{date}}
       </view>
@@ -23,7 +23,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">时间</view>
-    <picker mode="time" value="{{time}}" start="{{datetoday? nowtime:'5:00'}}" end="22:00" bindchange="bindTimeChange">
+    <picker mode="time" value="{{time}}" start="{{datetoday? nowtime:'6:00'}}" end="22:00" bindchange="bindTimeChange">
       <view class="picker">
         {{time}}
       </view>
@@ -55,13 +55,13 @@
   </view>
   <view class="cu-form-group align-start">
     <view class="title">备注</view>
-    <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="请输入备注"></textarea>
+    <textarea maxlength="60" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="请输入备注"></textarea>
   </view>
 
   <view class="box" style="position: fixed; bottom: 40px; width: 100%;">
     <view class="cu-bar btn-group">
-      <button class="cu-btn bg-green shadow-blur round">保存</button>
-      <button class="cu-btn bg-blue shadow-blur round" bindtap="submitDemand">创建</button>
+      <button class="cu-btn bg-green shadow-blur round" bindtap="ResetPost">重置</button>
+      <button class="cu-btn bg-blue shadow-blur round" disabled="{{iscreating}}" type=""  bindtap="submitDemand">创建</button>
     </view>
   </view>
 </form>

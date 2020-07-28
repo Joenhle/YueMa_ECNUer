@@ -1,4 +1,7 @@
 /* miniprogram/pages/runMap/runMap.wxss */
+page{
+  height:100%;
+}
 .mainView{
   display: flex;
   flex-direction: column;

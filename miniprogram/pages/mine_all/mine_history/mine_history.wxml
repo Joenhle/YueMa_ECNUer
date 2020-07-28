@@ -8,6 +8,12 @@
 </view>
 
 
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='../../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>客官请稍等</view>
+</view>
+
+
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
   <swiper-item wx:for="{{4}}" wx:key>
     <image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
@@ -25,15 +31,15 @@
 
   <!--右侧主栏-->
   <scroll-view class="VerticalMain" scroll-y scr oll-with-animation style="height:calc(100vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
-    <view class="padding-top padding-lr" wx:for="{{list}}"  wx:key id="main-{{index}}">
+    <view class="padding-top padding-lr" wx:for="{{list}}" wx:for-index="i" wx:key id="main-{{i}}">
       <view class='cu-bar solid-bottom bg-white'>
         <view class='action'>
           <text class='cuIcon-title text-green'></text> {{item.name}} </view>
       </view>
       <view class="cu-list menu-avatar">
 
-        <view class="cu-item cur" wx:for="{{list_history[index]}}">
-          <view class="cu-avatar radius lg" style="background-image:url(https://wx.qlogo.cn/mmopen/vi_32/JePXUWYSCnibrWiat5tI902nmVdOvmS7OR6vq7MfiaSOAkBspI25iaSxhR6aVePvgoGJHlRppOSLm9yO4h1kBMVPNA/132);">
+        <view class="cu-item cur" wx:for="{{list_history[i]}}" bindtap="Tiaozhuan" data-i="{{i}}" data-id="{{item._id}}">
+          <view class="cu-avatar radius lg" style="background-image:url({{userinfo.avatarUrl}});">
           </view>
           <view class="content">
             <view>

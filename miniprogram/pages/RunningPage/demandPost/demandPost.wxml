@@ -33,17 +33,17 @@
   <view class="title">{{demandPost.run_time}}</view>
 </view>
 <view class="cu-form-group align-start">
-  <view class="title">备注</view>
-  <textarea maxlength="-1" value="{{demandPost.remark}}" placeholder="请输入备注"></textarea>
+	<view class="title">备注</view>
+	<text maxlength="-1" class="mytext" >{{demandPost.remark}}</text>
 </view>
 <view class="box" style="position: fixed; bottom: 40px; width: 100%;">
   <view class="cu-bar btn-group">
-    <button wx:if="{{is_collected}}" class="cu-btn bg-green shadow-blur round" bindtap="Cancel_collect">取消收藏</button>
-    <button wx:else class="cu-btn bg-green shadow-blur round" bindtap="Collect_post">收藏</button>
-    <button wx:if="{{is_partof}}" class="cu-btn bg-blue shadow-blur round" bindtap="Liaotianshi" >聊天室
-     <view wx:if="{{unread_news!=0}}" class="cu-tag badge">{{unread_news}}</view>
+    <button wx:if="{{is_partof}}" class="cu-btn bg-green shadow-blur round" bindtap="Quit_team">退出</button>
+    <button wx:else class="cu-btn bg-green shadow-blur round" disabled type="" >退出</button>
+    <button wx:if="{{is_partof}}" class="cu-btn bg-blue shadow-blur round" bindtap="Liaotianshi">进入聊天室
+    <view wx:if="{{unread_news!=0}}" class="cu-tag badge">{{unread_news}}</view>
     </button>
     <button wx:elif="{{not_gender}}" class="cu-btn bg-blue shadow-blur round">性别不合</button>
-    <button wx:else class="cu-btn bg-blue shadow-blur round" bindtap="Jion_running">加入</button>
+    <button wx:else class="cu-btn bg-blue shadow-blur round" disabled="{{isjoining}}" type="" bindtap="Jion_running">加入</button>
   </view>
 </view>

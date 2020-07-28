@@ -51,6 +51,7 @@ page{
 }
 
 .text{
+  word-break:break-word;
   font-size: 15px;
   font-family: "KaiTi";
   margin-left: -5px;
@@ -139,7 +140,7 @@ page{
     height:auto;
     background-color: rgba(240, 240, 240, 0.6);
     margin-left: 15px;
-    width: 305px;
+    width: 93%;
 }
 .comments_of_avatar{
   width: 30px;
@@ -147,8 +148,9 @@ page{
   margin-left: 5px;
 }
 .comments_of_text{
+  word-break:break-all;
   font-size: 13px;
-  width: 290px;
+  width: 81%;
   margin-left: 35px;
   margin-top: -10px;
   font-weight: 700
@@ -183,18 +185,23 @@ page{
   float: left;
 }
 .comments_of_time{
-  margin-left: 205px;
+  margin-left: 68%;
   margin-top: -30px;
   font-size: 11px;
   width:400px;
   float: left;
 }
+.image_of_shanchu_view{
+  margin-left: 92%;
+  margin-bottom: 20px;
+  margin-top:-20px;
+}
+
 .image_of_shanchu{
   height: 20px;
   width: 20px;
-  margin-left: 275px;
-  margin-top: -20px;
   float: left;
+  margin-top: -2px;
 }
 .divLine_of_comments{
   background:#E0E3DA;

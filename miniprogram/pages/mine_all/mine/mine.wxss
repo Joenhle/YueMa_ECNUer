@@ -1,74 +1,85 @@
-.user {
-  width: 725rpx;
-  background: #ffffff;
-  padding: 20rpx 10rpx 10rpx 0;
-  margin: 10rpx 0 0 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #dcdcdc;
-  box-shadow: 0 2px 5px #eeeeee;
-}
-.user .userinfo-avatar{
-  flex: 1;
-  display: inline-block;
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 60rpx;
-}
-.user .user-info{
-  flex: 5;
-  text-align: left;
-}
-.user .user-info text{
-  display: block;
-}
-.user .user-info .userinfo-nickname{
-  padding: 8rpx 0 10rpx 0;
-  font-size: 30rpx;
-  color: #818A8F;
-}
-.user .user-info .edit{
-  font-size: 30rpx;
-  color: #e08e8e;
-  line-height: 34rpx;
+.user-info {
+  flex-direction: column;
+  margin: 5rpx 0 -1px;
+  padding: 25rpx 30rpx 20rpx;
 }
 
-.my{
-  margin: 15rpx 0 0 0;
-  border-top: solid 1px #ebebeb;
-  border-bottom: solid 2px #ebebeb;
+.user-warn{
+  margin-top:0rpx;
+  font-size: 35rpx;
 }
-.my .my-item{
-  width: 750rpx;
-  background: #ffffff;
-  padding: 0
+
+.user-warn2{
+  margin-top:0rpx;
+  font-size: 25rpx;
 }
-.my .my-item .myitem-icon{
+
+.info-hd {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.user-title {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 25rpx;
 }
-.my .my-item .myitem-icon image{
-  width: 45rpx;
-  height: 45rpx;
-  padding: 37.5rpx 0;
-  box-sizing: content-box;
+
+.user-name {
+  font-size: 40rpx;
+  line-height: 160%;
+  letter-spacing: 2rpx;
+  color:rgb(233, 43, 164);
 }
-.my .my-item .myitem-name{
-  flex: 5;
-  text-align: left;
-  font-size: 34rpx;
-  color: #160f0f;
-  line-height: 60rpx;
-  padding: 30rpx 0;
-  border-bottom: solid 1px #ebebeb;
+
+.user-id {
+  font-size: 35rpx;
+  color: #2c68eb;
+
 }
-.my .my-item:last-child .myitem-name{
-  border-bottom: none;
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10pt;
+  line-height: 140%;
+  color: #8b8b8b;
 }
-.my .my-item .myitem-nameHL {
-  flex: 5;
-  text-align: left;
-  font-size: 34rpx;
-  color: #0a0909;
-  line-height: 60rpx;
-  padding: 30rpx 0;
-  border-bottom: solid 1px #f8f3f3;
+
+.info-bd {
+  display: flex;
+  justify-content: space-between;
+  padding: 25rpx 15rpx 0 5rpx;
+  font-size: 11pt;
+  line-height: 150%;
+  color: #8b8b8b;
 }
+
+.info-bd-left, .info-bd-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-bd-left {
+  flex-shrink: 0;
+  padding-right: 30rpx;
+}
+
+.user-text {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;/*溢出隐藏1*/
+  overflow: hidden;/*溢出隐藏2*/
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  padding-bottom: 10rpx;
+}
+

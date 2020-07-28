@@ -1,54 +1,47 @@
 <!--pages/more_question/more_question.wxml-->
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
-  <view slot="backText">返回</view>
+<!--自定义页面-->
+<cu-custom bgColor="bg-gradual-pink" isBack='{{true}}'>
+  <view slot='backText'>返回</view>
   <view slot="content">疑惑解答</view>
 </cu-custom>
-<!--  轮播图  -->
-<!--------------------------------------------------------------------------------------------------------------------->
-<swiper indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
-  <block wx:for="{{bnrUrl}}" wx:for-index="index">
-    <swiper-item>
-      <image src='{{item.url}}' style="width:100%"  mode='aspectFill'></image>
-    </swiper-item>
-  </block>
+<!--轮播图-->
+<swiper class="screen-swiper {{'square-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{bnrUrl}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill"></image>
+  </swiper-item>
 </swiper>
-<!--------------------------------------------------------------------------------------------------------------------->
 <!-- 图片导航  -->
 <view class="weui-grids">
      <view class="weui-grid" wx:for="{{routers}}" >
             <view class='weui-grid__bg' bindtap='choosewhat' data-index="{{item.name}}">
                 <view class="weui-grid__icon">
-                    <image src="../{{item.url}}" mode="scaleToFill" /><!--scaleToFill 	缩放模式-->
+                    <image src=" {{item.url}}" mode="scaleToFill" /><!--scaleToFill 	缩放模式-->
                </view>
                 <text class="weui-grid__label">{{item.name}}</text>
              </view>
      </view>
 </view>
-<!--------------------------------------------------------------------------------------------------------------------->
 <!--  搜索框  -->
 <view class='search'>
      <input type='text' placeholder='输入你想要的内容' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='search'></input>
      <image src='../../../images/more/usedobject_5.png' bindtap='search'></image>
 </view>
-<!--------------------------------------------------------------------------------------------------------------------->
 <!-- 发布需求 -->
 <view class="imagesize">
-<image src='../../../images/more/normal_1.jpg' wx:if="{{click_publish}}"  class='avatar' bindtap='change'> </image>
-<image wx:else  src='../../../images/more/normal_1.jpg'  class='avatar' ></image>
+  <image src='../../../images/more/normal_1.jpg' wx:if="{{click_publish}}"  class='avatar' bindtap='change'> </image>
+  <image wx:else  src='../../../images/more/normal_1.jpg'  class='avatar' ></image>
 </view>
-<!--------------------------------------------------------------------------------------------------------------------->
 <!--分割线-->
  <view class='container-line'></view>
-<!--------------------------------------------------------------------------------------------------------------------->
  <!--显示数据-->
 <block wx:for='{{question}}' wx:for-item="item" wx:for-index="idx">
     <!--每个说说的分界线-->
     <view class='container-line'></view>
     <!--显示每个说说-->
-    <view class='container-content'  data-topicid='{{item._id}}' data-openid='{{item._openid}}'>
+    <view class='container-content' >
      <!--显示头像 -->
-      <view class='user-info'>
-        <image class='user-head' src='{{item.src_of_avatar}}' mode='aspectFill'></image>
+      <view class='user-info' catchtap="more_deatiled" data-item='{{item}}'>
+        <image class='user-head' src='{{item.src_of_avatar}}' catchtap='his_information' data-item='{{item}}' mode='aspectFill'></image>
         <view class='user-name-time'>
           <view class='user-name'>{{item.poster}}</view>
           <view class='user-publish-time'>{{item.post_time}}</view>
@@ -61,39 +54,35 @@
             <image wx:elif="{{item.leibie=='修理物件'}}" class='user-inform' src='../../../images/more/question_5.png' mode='aspectFill'></image>
              <image wx:elif="{{item.leibie=='其他'}}" class='user-inform' src='../../../images/more/usedobject_11.png' mode='aspectFill'></image>
       </view>
-<!--------------------------------------------------------------------------------------------------------------------->
       <!--文本和图片的显示-->
-      <view class='content'>
+      <view class='content'  catchtap="more_deatiled" data-item='{{item}}' data-index='{{idx}}'>
         <block>
           <text class='content-text'>{{item.text}}</text>
           <scroll-view class='content-scroll' scroll-y='true'>
                <block wx:for="{{item.images}}" wx:for-item="i" >
-              <image class='content-img' src='{{i}}' mode='aspectFill' bindtap='PreviewImage' data-src='{{i}}' data-images='{{item.images}}'></image>
+              <image class='content-img' src='{{i}}' mode='aspectFill' catchtap='PreviewImage' data-src='{{i}}' data-images='{{item.images}}'></image>
               </block>
          </scroll-view>
         </block>
       </view>
-<!--------------------------------------------------------------------------------------------------------------------->
        <!--点赞和评论，如果不是这个数据则为。。。标志-->
-     <image wx:if='{{_id!=item._id}}' class="moreFunction" src='../../../images/more/more.png' data-topicid='{{item._id}}'  bindtap='moreFunction'></image>
-     <!--如果是这个数据，则数据变为<标志，同时支持点赞和评论-->
-     <view wx:else class='dianzanPinglun'>
-       <!--点赞和评论的外边框-->
-        <view class='dianzanPinglun_border'>
+     <image wx:if='{{_id!=item._id}}' class="moreFunction" src='../../../images/more/more.png' data-topicid='{{item._id}}'  catchtap='moreFunction'></image>
+     <view wx:else class='dianzanPinglun'> <!--如果是这个数据，则数据变为<标志，同时支持点赞和评论-->
+        <view class='dianzanPinglun_border'><!--点赞和评论的外边框-->
         <!--当点赞为true且当前的点赞的item_id等于js中保存的_id时，则为(dianzan_1红色）,（否则为dianzan灰色)-->
           <image wx:if='{{dianzan==true}}' class="dianzan" src='../../../images/more/dianzan_1.png'></image>
-          <image wx:else class="dianzan" src='../../../images/more/dianzan.png' bindtap='dianzan' data-topicid='{{item._id}}' ></image>
-          <text class="dianzantext" decode="{{true}}" space="{{true}}">点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+          <image wx:else class="dianzan" src='../../../images/more/dianzan.png' catchtap='dianzan' data-topicid='{{item._id}}' ></image>
+          <text class="dianzan_pinlun_text" decode="{{true}}" space="{{true}}">点赞&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
           <!--当评论为false时，为灰色-->
-        <image wx:if='{{pinglun==false}}' class="pinglun" src='../../../images/more/pinglun.png' bindtap='pinglun'></image>
+        <image wx:if='{{pinglun==false}}' class="pinglun" src='../../../images/more/pinglun.png' catchtap='pinglun'></image>
         <!--当评论为true时，为红色，且显示出输入框--->
-         <image wx:else class="pinglun" src='../../../images/more/pinglun_1.png' bindtap='pinglun_1' ></image>
-         <text class="dianzantext">评论</text>
+         <image wx:else class="pinglun" src='../../../images/more/pinglun_1.png' catchtap='pinglun_1' ></image>
+         <text class="dianzan_pinlun_text">评论</text>
         </view>     
-        <image class="moreFunction_1" src='../../../images/more/more_1.png' bindtap='moreFunction_1'></image>
+        <image class="moreFunction_1" src='../../../images/more/more_1.png' catchtap='moreFunction_1'></image>
         </view>
          <!--点击了评论跳出评论和自己发射的神评-->
-            <!--点赞人数的页面------------------------------------>
+            <!--点赞人数的页面-->
             <border wx:if='{{dianzan==true&&_id==item._id}}' class='dianzanrenshu'>
             <!--循环显示点赞列表的人-->
             <view wx:for='{{dianzan_list}}' wx:for-item="item" wx:for-index="idx">
@@ -101,7 +90,7 @@
             <text class='dianzanname'>{{item.poster}}</text>
             </view>
             </border>
-            <!--评论的页面---------------------------------------->
+            <!--评论的页面-->
             <border wx:if='{{pinglun==true&&_id==item._id}}' class='pinglunOther'>
              <view wx:for='{{comments}}' wx:for-item="item" wx:for-index="idx">
              <!--头像框迷你-->
@@ -116,20 +105,19 @@
               <view wx:if='{{idx!=comments.length-1}}' class='pinglun-line'></view>
              </view>
              </border>
-<!--------------------------------------------------------------------------------------------------------------------->
              <view wx:if='{{pinglun==true&&_id==item._id&&pinglunpublish==false}}' class='pinglunPublish'> 
              <!--头像框迷你-->
              <image class='user-headMini' src='{{userInfo.avatarUrl}}' mode='aspectFill'></image>
            <!--输入框-->
             <view  class='publish'>
-             <textarea class='publish-text' placeholder="请发射你的神评"  maxlength="140"  bindinput="pinglunInput" auto-height auto-focus>
+             <textarea class='publish-text' placeholder="请发射你的神评"  maxlength="140"  bindinput="pinglunInput"
+              auto-height auto-focus>
             </textarea>
-           <image data-topicid='{{item._id}}'  src='../../../images/more/publishPinglun.png' bindtap='publish' data-topicid='{{item._id}}'></image>
+           <image data-topicid='{{item._id}}'  src='../../../images/more/publishPinglun.png' catchtap='publish' data-topicid='{{item._id}}'></image>
           </view>
            </view>
     </view><!--这个是view对内容的一条线-->
-<!--------------------------------------------------------------------------------------------------------------------->
         <!-- 尾部的分割线 -->
-        <view class='container-line'></view>
+      <view class='container-line'></view>
 </block>
 

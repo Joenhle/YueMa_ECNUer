@@ -1,0 +1,54 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="content">{{title}}</view>
+</cu-custom>
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+	<image src='../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+	<view class='gray-text'>客官请稍等</view>
+</view>
+
+<view class='cu-load load-modal' wx:if="{{loadMore}}">
+	<image src='../../images/logo/pig.jpeg' class='png' mode='aspectFit'></image>
+	<view class='gray-text'>官人，皇榜只有二十条呢</view>
+</view>
+
+<view>
+	<scroll-view scroll-y="true" style="height:auto;" bindscrolltolower="Lower" bindscroll="scroll">
+		<view class="lingjiangtai">
+			<image class="image_of_lingjiangtai" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/领奖台.png"></image>
+			<image class="image_of_yinuoqianjin" src="../../images/logo/qianjin.png" bindtap="bind_qianjin"></image>
+			<image class="image_of_yundongdaren" src="../../images/logo/daren.png" bindtap="bind_daren"></image>
+			<image class="num_one_avatarUrl" src="{{list_qiansan[0].avatarUrl}}"></image>
+			<image class="num_two_avatarUrl" src="{{list_qiansan[1].avatarUrl}}"></image>
+			<image class="num_three_avatarUrl" src="{{list_qiansan[2].avatarUrl}}"></image>
+			<text class="num_one_name">{{list_qiansan[0].nickName}}</text>
+			<text class="num_two_name">{{list_qiansan[1].nickName}}</text>
+			<text class="num_three_name">{{list_qiansan[2].nickName}}</text>
+			<text class="num_one_score">{{curentTap==0?list_qiansan[0].score:list_qiansan[0].exercise}}</text>
+			<text class="num_two_score">{{curentTap==0?list_qiansan[1].score:list_qiansan[1].exercise}}</text>
+			<text class="num_three_score">{{curentTap==0?list_qiansan[2].score:list_qiansan[2].exercise}}</text>
+		</view>
+		<view class="paihangbang_list">
+
+			<view wx:if="{{bangwai}}" class="paihangbang">
+				<text wx:if="{{bangwai}}" class="paihangbang_ranking" style="color:rgba(25,25,112,0.6);font-weight:700">榜外</text>
+				<image wx:if="{{bangwai}}" class="paihangbang_avatarUrl" src="{{me[0].avatarUrl}}"></image>
+				<image wx:if="{{bangwai}}" class="star" src="../../images/logo/star.png"></image>
+				<text wx:if="{{bangwai}}" class="paihangbang_name" style="color:rgba(25,25,112,0.6);font-weight:700">{{me[0].nickName}}</text>
+				<text wx:if="{{bangwai}}" class="paihangbang_score">{{curentTao==0?me[0].score:me[0].exercise}}</text>
+			</view>
+			<view wx:if="{{bangwai}}" class="divLine"></view>
+
+			<view wx:for="{{list}}" wx:for-index="i">
+				<view class="paihangbang">
+					<text class="paihangbang_ranking">{{i+4}}</text>
+					<image class="paihangbang_avatarUrl" src="{{list[i].avatarUrl}}"></image>
+					<image class="star" src="../../images/logo/star.png"></image>
+					<text class="paihangbang_name">{{list[i].nickName}}</text>
+					<text class="paihangbang_score">{{curentTap==0?list[i].score:list[i].exercise}}</text>
+				</view>
+				<view class="divLine"></view>
+			</view>
+		</view>
+	</scroll-view>
+</view>

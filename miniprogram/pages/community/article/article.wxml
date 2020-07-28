@@ -5,7 +5,7 @@
 </cu-custom>
 
 <view class="page" style="padding:30rpx">
-  <view class="page__bd">
+  <view class="page__bd" style="border-radius:10rpx">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" style="margin-left:10px;margin-top:0px;width:40px;height:40px">
       <image class="weui-media-box__thumb" style="border-radius:15%;margin-top:3px" src="{{ne.src_of_avatar}}" />
     </view>
@@ -36,7 +36,7 @@
       <view class="pinglunshu">{{ne.comments.length}}</view>
       <image class="image_of_post_shanchu {{ne._openid==openid?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除(2).png" bindtap="Post_of_shanchu"></image>
     </view>
-    <image class="image_of_sanjiao {{show_image_sanjiao?'show':'hide'}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/评论三角.png"></image>
+    <image class="image_of_sanjiao {{show_image_sanjiao?'show':'hide'}}" src="../../../images/logo/trilateral.png"></image>
 
     <view class="comments {{show_image_sanjiao?'show':'hide'}}" wx:for="{{ne.comments}}" wx:for-index="i">
       <view class="comments_of_avatar">
@@ -45,7 +45,7 @@
       <view class="nickName_of_comment">{{item[0]}}</view>
       <view class="comments_of_time">{{item[3]}}</view>
       <view class="comments_of_text">{{item[2]}}</view>
-      <view class="image_of_shanchu_view ne._openid==openid?'show':item[4]==openid?'show':'hide'">
+      <view class="image_of_shanchu_view {{item[4]==openid?'show':'hide'}}">
         <image class="image_of_shanchu" bindtap="Comments_shanchu" data-i="{{i}}" src="cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/删除.png"></image>
       </view>
       <view class="divLine_of_comments"></view>

@@ -79,7 +79,6 @@
   display: block;
   width: 100%;
   height: 100%;
-  box-sizing: content-box;
 }
 .weui-grid__icon + .weui-grid__label {
   margin-top: 5px;
@@ -95,40 +94,32 @@
   overflow: hidden;
 }
 /* 2搜索框样式 */
-.search
-{
+.search{
   display: flex;
   flex-direction: row;
   justify-content:space-between;
   align-items: center;/*居中对齐弹性盒的各项 */
-  width:95%;/*输入框宽度*/
+  width:100%;/*输入框宽度*/
   height:80rpx;/*输入框高度*/
   background-color:rgb(248, 246, 246);/*背景颜色*/
   margin-top: 2%;/*与顶部距离*/
   border:1rpx solid rgb(245, 11, 120);/*边框的颜色*/
   border-radius: 5rpx;/*边框粗细*/
-  margin-bottom: 2%;
-  box-sizing: content-box;
+  margin-bottom: 2%
 }
-
-/* 搜索框提示文字样式 */
-.search input
-{
+.search input{
+  color: rgb(128, 177, 250);
+  width:90%;
   font-size:35rpx;/*字体大小*/
   padding-left:30rpx; /*与字体左边的距离*/
 }
-
-/* 搜索框小图标 */
-.search image
-{ 
+.search image{ 
   width:60rpx;
   height:60rpx;
   padding-right:20rpx;
-  box-sizing: content-box;
 }
-
-  /*3.图片圆形显示*/
-  .imagesize{
+/*3.发布圆形显示*/
+.imagesize{
   z-index:10; /*发布的图片无法覆盖，设立Z坐标*/
   position:fixed; 
   bottom:3%;
@@ -136,41 +127,32 @@
   display: flex;
   justify-content: center;
 }
-
- .avatar{
+.avatar{
     height: 70rpx;
     width: 70rpx;
-    border-radius: 25px;
+    border-radius: 50rpx;
     background: pink;                                                                   
     display: flex;
 }
-
-/*4.包含的内容（图片和文字等）*/
+/*4.包含的内容,头像和时间还有提示符*/
 .container-content {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 5px 4px 3px 2px; /*上下左右的边距*/
   margin: 0 auto;
-  background-color: rgb(253, 209, 217);
 }
-
-/*分界线*/
 .container-line{
   width: 100%;
   height: 3rpx;
   background-color: rgba(248, 60, 132, 0.89);
 }
-
-/*用户的信息*/
 .user-info {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
-
-/*用户的头像*/
 .user-head {
   margin-left: 5px;
   width: 40px;
@@ -179,80 +161,71 @@
   border-radius: 50%;
   background-color: #ccc;
 }
-
-/*用户的时间和名字*/
 .user-name-time {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 70%;
   margin-top: 5px;
   margin-left: 10px;
 }
-
-/*用户的名字*/
 .user-name {
   font-size: 15px;
   color: rgb(69, 180, 245);
   font-weight: bold;
 }
-
-/*用户的发布时间*/
 .user-publish-time {
   font-size: 15px;
   color: rgb(238, 45, 119);
 }
-
-/*内容*/
+.user-inform{
+  margin-right: 10px;
+  width:90rpx;
+  height:90rpx; 
+}
+/*5.详细内容的显示*/
 .content {
   display: flex;
   flex-direction: column;
   margin-right: 5%;
   margin-top: 2px;
 }
-
-/*允许竖向华东*/
 .content-scroll {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
-/*发布信息的字体*/
 .content-text {
-  font-size: 16px;
-  color: rgb(104, 90, 228);
+  font-size: 32rpx;
   margin-left: 10px;
+  display: -webkit-box;  /*设置为弹性盒子*/
+  -webkit-line-clamp: 5;  /*最多显示5行*/
+  -webkit-box-orient: vertical;
+  overflow: hidden;  /*超出隐藏*/
+  text-overflow: ellipsis;  /*超出显示为省略号*/
+  word-break: break-word;  /*强制英文单词自动换行*/
 }
-
-/*发布信息的图像*/
 .content-img {
-  width: 97px;
-  height: 97px;
-  margin-left: 4px;
-  margin-top: 4px;
+  width: 31%;
+  height: 200rpx;
+  margin-left: 8rpx;
+  margin-top: 8rpx;
   background-color: #999;
 }
-/*旁边的图片提示，绩点啊，求职就业啥的*/
- .user-inform{
-  margin-right: 10px;
-  width:90rpx;
-  height:90rpx; 
-  }
-  /*2.点赞和评论的图标和框框*/
-  .moreFunction{
+/*6.点赞和评论的图标和框框*/
+.moreFunction{
   margin-left:90%;
   width:50rpx;
   height:50rpx; 
-  }
-  .moreFunction_1{
+}
+.moreFunction_1{
   width:50rpx;
   height:50rpx; 
-  }
- .dianzanPinglun{
+}
+.dianzanPinglun{
   display:flex;
   flex-direction: row;
 }
-  .dianzanPinglun_border{
+.dianzanPinglun_border{
    display: flex;
    flex-direction:row;
    text-align: center;
@@ -261,75 +234,77 @@
    width:45%;
    border-radius: 5rpx;/*边框粗细*/
    border:1rpx solid rgb(245, 11, 120);/*边框的颜色*/
-  background-color: rgb(92, 213, 226);
-  }
-  .dianzan{
+  background-color: rgb(240, 240, 229);
+}
+.dianzan{
    width:65rpx;
    height:60rpx;
-  }
-  .pinglun{
+}
+.dianzan_pinlun_text{
+  margin-top: 2%;
+  font-size: 30rpx;
+  color: rgb(245, 110, 184);
+  font-weight: bold;
+}
+.pinglun{
    width:60rpx;
    height:60rpx;
-  }
-  /*2.点赞的人数显示*/
-  .dianzanrenshu{
-    border-radius:10%;
-    border:1rpx solid rgb(245, 11, 120);
-    margin-top: 4rpx;
-    margin-left:35rpx;
-    display:flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    width:88%;
-    background-color: rgb(133, 189, 207);
-    margin-bottom: 10rpx;
-  }
-  .dianzanzan{
-    border-radius: 50%;
-    width:40rpx;
-    height: 40rpx;
-  }
-  .dianzanname{
+}
+.dianzanrenshu{
+  border-radius: 10rpx;
+  border:3rpx solid rgb(245, 11, 120);
+  margin-top: 4rpx;
+  margin-left:35rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  width:88%;
+  background-color: rgb(243, 174, 184);
+  margin-bottom: 10rpx;
+}
+.dianzanzan{
+  margin-top:4%;
+  border-radius: 50%;
+  width:40rpx;
+  height: 40rpx;
+}
+ .dianzanname{
   margin-left: 5rpx;
   margin-right: 20rpx;
-  font-size: 35rpx;
-  color: rgb(253, 33, 88);
-  }
-  /*其他评论的显示*/
-  /*3.其他评论的显示*/
-  .pinglunOther{
-     border:1rpx solid rgb(245, 11, 120);
-     margin-left:50rpx;
-     border-radius:7%;
-     display:flex;
-     flex-direction: column;
-     justify-content:flex-end;
-     width:86%;
-     background-color: rosybrown;
-  }
-  .user-headpinglun{
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: red;
+}
+/*7.其他评论的显示*/
+.pinglunOther{
+  border:3rpx solid rgb(245, 11, 120);
+  margin-left:35rpx;
+  margin-top: 4rpx;
+  border-radius: 10rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  width:88%;
+  background-color:rgb(240,240,229);
+  margin-bottom: 10rpx;
+}
+.user-head-name-time-pinglun{
+    display:flex;
+    flex-direction: row;
+}
+.user-headpinglun{
   margin-left: 12px;
   width: 27px;
   height: 27px;
   border-radius: 50%;
   margin-top:12rpx;
-  }
-  .user-head-name-time-pinglun{
-    display:flex;
-    flex-direction: row;
-  }
-  .user-comments{
-    margin-top:0rpx;
-    font-size:35rpx;
-    margin-left:30rpx;
-    color:rgb(156, 195, 247);
-  }
-  /*用户的时间和名字*/
+}
 .user-name-time-pinglun{
   display: flex;
   flex-direction: column;
   width: 70%;
-  margin-top: 1px;
+  margin-top: 4px;
   margin-left: 2px;
 }
 .user-name-pinglun{
@@ -337,25 +312,35 @@
   color: rgb(69, 180, 245);
 }
 .user-publish-time-pinglun{
-   font-size: 12px;
+  font-size: 12px;
   color: rgb(238, 45, 119);
+}
+.user-comments{
+    margin-top:0rpx;
+    font-size:28rpx;
+    margin-left:30rpx;
+    color: rgb(133, 189, 207);
+    display: -webkit-box;  /*设置为弹性盒子*/
+    -webkit-line-clamp: 5;  /*最多显示5行*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;  /*超出隐藏*/
+    text-overflow: ellipsis;  /*超出显示为省略号*/
+    word-break: break-word;  /*强制英文单词自动换行*/
 }
 .pinglun-line{
   height: 1rpx;
   background:red;
   width: auto;
 }
-
- /* 4.发布评论的框框 */
+ /*8.发布评论的框框 */
  .pinglunPublish{
    display:flex;
    flex-direction: row;
    justify-content:flex-start;
    align-items: flex-start;/*居中对齐弹性盒的各项 */
  }
-  /*迷你发布头像*/
  .user-headMini{
-  margin-left: 33px;
+  margin-left: 28px;
   width: 27px;
   height: 27px;
   line-height: 40px;/*设置行高*/
@@ -363,10 +348,10 @@
   margin-top:10rpx;
  }
  /*评论的发布（没有头像)*/
-.publish
-{
+.publish{
   display:flex;
   flex-direction: row;
+  margin-left:2px;
   width:75%;/*输入框宽度*/
   background-color:rgb(174, 227, 243);/*背景颜色*/
   margin-top: 1%;/*与顶部距离*/
@@ -374,7 +359,6 @@
   border-radius: 5rpx;/*边框粗细*/
   margin-bottom: 1%
 }
-/*发布的文本的各式*/
 .publish-text{
   display:flex;
   flex-direction: row;
@@ -382,10 +366,9 @@
   color:mediumvioletred;
   font-size: 13px;
 }
-/*发布的图片小飞机*/
  .publish image{
   width:55rpx;
   height:55rpx;
   padding-right:15rpx;/*右边隔离15rpx距离*/
- }
+}
 

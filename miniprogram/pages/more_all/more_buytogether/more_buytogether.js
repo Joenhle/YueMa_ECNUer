@@ -3,38 +3,38 @@ const app = getApp()
 Page({
   data: {
     bnrUrl: [{  //轮播图
-      url: 'cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816023090000.jpg'
+      url: 'cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15816023090000.png'
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816023090001.jpg"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15816023090001.jfif"
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816023090002.jpg"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15816023090002.jfif"
     }, {
-        url: "cloud://yuxin1392368311-tfe9a.7975-yuxin1392368311-tfe9a-1301185659/嗯_15816023090003.jpg"
+        url: "cloud://xiaohuang-evwg7.7869-xiaohuang-evwg7-1301134245/嗯_15816023090003.jfif"
     }],
     routers: [  //6个图片选项
       {
         name: '奶茶',
-        url: '../../images/more/buytogether_1.png',
+        url: '../../../images/more/buytogether_1.png',
       },
       {
         name: '外卖',
-        url: '../../images/more/buytogether_2.png',
+        url: '../../../images/more/buytogether_2.png',
       },
       {
         name: '旅行',
-        url: '../../images/more/buytogether_3.png',
+        url: '../../../images/more/buytogether_3.png',
       },
       {
         name: '淘宝',
-        url: '../../images/more/buytogether_4.png',
+        url: '../../../images/more/buytogether_4.png',
       },
       {
         name: '快递代送',
-        url: '../../images/more/buytogether_5.png',
+        url: '../../../images/more/buytogether_5.png',
       },
       {
         name: '其他',
-        url: '../../images/more/buytogether_6.png',
+        url: '../../../images/more/buytogether_6.png',
       }
     ],
     buytogether: [],    //数据库名称
@@ -46,9 +46,12 @@ Page({
     page: 0,//数据分页
     reachBottom: false,//是否到达底部
     previewImage: false,//如果是预览图片返回则不用刷新页面
+    detail:false,//是否看详细页面
+    look_avatar:false,//看头像不刷新
+    once:true,//第一次进入刷新页面
+    Is_delete_index:0,//要删除的的下标
   },
-  //选择显示的分类页面（奶茶，外卖等）*/
-  choosewhat: function (e) {
+  choosewhat: function (e) {//选择显示的分类页面（奶茶，外卖等）
     this.setData({
       search_what: e.currentTarget.dataset.index,
       page: 0,
@@ -58,8 +61,7 @@ Page({
     console.log(this.data.search_what)
     this.getData();
   },
-  //点击事件跳转发布页面
-  change: function () {
+  change: function () { //点击事件跳转发布页面
     var click_publish = this.data.click_publish;
     this.setData({
       click_publish: false
@@ -68,15 +70,13 @@ Page({
         url: '../more_buytogether_add/more_buytogether_add?id=' + this.data.id
       })
   },
-  //搜索框文本内容显示
-  inputBind: function (event) {
+  inputBind: function (event) { //搜索框文本内容显示
     this.setData({
       inputValue: event.detail.value
     })
     console.log('输入为: ' + this.data.inputValue)
   },
-  //搜索功能
-  search: function () {
+  search: function () { //搜索功能
     this.setData({
       click_search: true,
       page: 0,
@@ -85,10 +85,7 @@ Page({
     this.getData();
     console.log('查询结束')
   },
-  //图片预览
-  PreviewImage: function (e) {
-    console.log(e.target.dataset.src)
-    console.log(e.target.dataset.images)
+  PreviewImage: function (e) { //图片预览
     wx.previewImage({
       current: e.target.dataset.src, // 当前显示图片的http链接  
       urls: e.target.dataset.images// 需要预览的图片http链接列表  
@@ -97,11 +94,10 @@ Page({
       previewImage: true
     })
   },
-  //判定取得的数据是否为空，或是是否加载没有更多数据了
-  pandingPage: function (length) {
+  pandingPage: function (length) {//判定取得的数据是否为空，或是是否加载没有更多数据了
     if (this.data.page == 0 && length == 0) {//如果页面为0且数据为0,此时没有上拉
       wx.showToast({
-        title: '请发布您的帖子吧',
+        title: '等待您添加呢~',
         icon: 'none'
       })
     }
@@ -118,8 +114,7 @@ Page({
       })
     }
   },
-  //触底则触发数据拼接
-  onReachBottomgetData: function (cloudData) {
+  onReachBottomgetData: function (cloudData) {//触底则触发数据拼接
     console.log(cloudData)
     var arr1 = this.data.buytogether; //从data获取当前datalist数组
     var arr2 = cloudData; //从此次请求返回的数据中获取新数组
@@ -131,8 +126,7 @@ Page({
     console.log('当前的页大小为' + this.data.page)
     this.pandingPage(arr2.length)
   },
-  //到达底部触发刷新事件
-  onReachBottom: function () {
+  onReachBottom: function () {  //到达底部触发刷新事件
     console.log("下拉加载中")
     this.setData({
       reachBottom: true
@@ -144,43 +138,67 @@ Page({
       duration: 1500
     })
   },
-  //监听返回页面
-  onShow: function () {
-    if (this.data.previewImage == true) {//图片预览则不刷新
+  onShow: function () {//监听返回页面
+    console.log('onshow')
+    if(app.globalData.Is_delete==true){
+      app.globalData.Is_delete=false
+      console.log(this.data.Is_delete_index)
+        this.data.buytogether.splice(this.data.Is_delete_index,1)
+        this.setData({
+          buytogether:this.data.buytogether
+        })
+    }
+    if(this.data.previewImage==true){//图片预览则不刷新
       this.setData({
-        previewImage: false
+        previewImage:false
       })
     }
-    else {//否则刷新
+    else if(this.data.detail==true){//看详细页面不刷新
       this.setData({
-        click_publish: true,
-        click_search: false,
-        search_what: '',
-        page: 0,
-        usedobject: []
+        detail:false
       })
-      this.getData();
     }
+    else if(this.data.look_avatar==true){//看头像不刷新
+      this.setData({
+        look_avatar:false
+      })
+    }
+    else if(this.data.once==true){//第一次进入不刷新
+      this.setData({
+        once:false
+      })
+    }
+    else{//否则刷 新
+      console.log('shuaxin')
+      this.setData({
+      click_publish: true,
+      click_search: false,
+      search_what: '',
+      page:0,
+      buytogether:[]
+    })
+    this.getData();
+  }
   },
-  // 页面相关事件处理函数--监听用户下拉动作
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function () {// 页面相关事件处理函数--监听用户下拉动作
     console.log("下拉中")
+    this.setData({
+      page:0
+    })
     wx.showNavigationBarLoading() //在标题栏中显示加载
     setTimeout(function () {  //模拟加载
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
     }, 1000);
-    that.getData();
+    this.getData();
   },
-  // 生命周期函数--监听页面加载
-  onLoad: function (options) {
+  onLoad: function (options) { // 生命周期函数--监听页面加载
     wx.cloud.init({
       env: app.globalData.evn
     })
     this.getData()
   },
-  //从云数据库中抓取数据
-  getData: function () {
+  getData: function () { //从云数据库中抓取数据
     var that = this
     const db = wx.cloud.database();
     console.log('模糊搜索' + this.data.click_search)
@@ -207,6 +225,9 @@ Page({
             })
             that.pandingPage(res.data.length)
           }
+          this.setData({
+            click_search:false
+          })
         }
       })
     }
@@ -276,4 +297,34 @@ Page({
       }
     }
   },
+  more_deatiled:function(e){ //进入详细页面
+   this.setData({
+      Is_delete_index:e.currentTarget.dataset.index
+  }) 
+   var _id=e.currentTarget.dataset.item._id
+   var _openid=e.currentTarget.dataset.item._openid
+   var  images=[]
+   images =e.currentTarget.dataset.item.images
+   var  leibie=e.currentTarget.dataset.item.leibie
+   var  post_time=e.currentTarget.dataset.item.post_time
+   var poster=e.currentTarget.dataset.item.poster
+   var src_of_avatar=e.currentTarget.dataset.item.src_of_avatar
+   var text=e.currentTarget.dataset.item.text
+   var tiezi='拼单奶茶'
+   this.setData({
+     detail:true
+   })
+  wx.navigateTo({
+    url: '../more_detailed/more_detailed?_id='+_id+'&_openid='+_openid+'&poster='+poster+'&post_time='+post_time+'&src_of_avatar='+src_of_avatar+'&leibie='+leibie+'&text='+encodeURIComponent(JSON.stringify(text))+'&images='+JSON.stringify(images)+'&tiezi='+tiezi
+  })
+  },
+  his_information:function(e){  //看个人信息
+  this.setData({
+   look_avatar:true
+   })
+  var link_openid=e.currentTarget.dataset.item._openid
+  wx.navigateTo({
+    url:'../../mine_all/mine_basic_information/mine_basic_information?link_openid='+link_openid
+  })
+  }
 })
